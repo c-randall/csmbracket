@@ -1,0 +1,71 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<section class="standings">
+  <p style="padding: 20px 5% 5px;">
+    Participants' scores are shown in the table below. The "Master" row is a reference
+    that shows the results for a perfect bracket up to this point in the tournament.
+    Click on the table headers to control how the results are sorted. The "TPP"
+    column displays Total Possible Points. Click on a row in the table to show
+    that participant's bracket.
+   </p>
+   <p style="padding: 5px 5% 5px;">
+     How scoring works: Participants earn points for each correct prediction
+     made on their bracket. The points that a correct prediction earns depends
+     upon the round in which the series took place. Round 1 series are worth 10
+     points, Round 2 series are worth 25 points, Conference Championships
+     are worth 50 points, and the Stanley Cup Championship is worth 100 points.
+   </p>
+
+  <div class="flexbox-standings">
+    <div class="col-standings col-table">
+      <table border="1;" class="standingstable col-standings">
+        <thead>
+          <tr>
+            <th><button class="sort-button" type="button" onclick="SortIt('0')">
+              Name<span {% if sort == 0 %}style="display: inline-block;" {% else %}style="display: none;"{% endif %} class="sort-carrot" id="0Col">&nbsp &#9660</span></button></th>
+            <th><button class="sort-button" type="button" onclick="SortIt('1')">
+              Points<span {% if sort == 1 %}style="display: inline-block;" {% else %}style="display: none;"{% endif %} class="sort-carrot" id="1Col">&nbsp &#9660</span></button></th>
+            <th><button class="sort-button" type="button" onclick="SortIt('2')">
+              TPP<span {% if sort == 2 %}style="display: inline-block;" {% else %}style="display: none;"{% endif %} class="sort-carrot" id="2Col">&nbsp &#9660</span></button></th>
+          </tr>
+        </thead>
+        <tbody {% if sort == 0 %}style="display: table-row-group;" {% else %}style="display: none;"{% endif %} id="0">
+          {% for row in tables.name.iterrows %}
+          <tr onclick="location.href='{% url 'standings' show_img=row.1.img_name sort=0 %}'">
+            <td>{{ row.1.Name }}</td>
+            <td>{{ row.1.Points }}</td>
+            <td>{{ row.1.TPP }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tbody {% if sort == 1 %}style="display: table-row-group;" {% else %}style="display: none;"{% endif %} id="1">
+          {% for row in tables.points.iterrows %}
+          <tr onclick="location.href='{% url 'standings' show_img=row.1.img_name sort=1 %}'">
+            <td>{{ row.1.Name }}</td>
+            <td>{{ row.1.Points }}</td>
+            <td>{{ row.1.TPP }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tbody {% if sort == 2 %}style="display: table-row-group;" {% else %}style="display: none;"{% endif %} id="2">
+          {% for row in tables.tpp.iterrows %}
+          <tr onclick="location.href='{% url 'standings' show_img=row.1.img_name sort=2 %}'">
+            <td>{{ row.1.Name }}</td>
+            <td>{{ row.1.Points }}</td>
+            <td>{{ row.1.TPP }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% load static %}
+    <div class="col-standings col-bracket">
+      <img src="{% static 'images/Brackets/'|add:show_img|add:'.png' %}"/>
+    </div>
+
+  </div>
+
+</section>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<section id="bracket-block" class="bracket" style="margin-bottom: 10px;">
+  <div class="container">
+
+    <div class="split split-one">
+      <div id="round-one-west" class="round round-one">
+        <div class="round-num">ROUND 1<br/></div>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.1 }}" id="R1T1" {% if not active %}disabled{% endif %}>{{ startingteams.1 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.2 }}" id="R1T2" {% if not active %}disabled{% endif %}>{{ startingteams.2 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.3 }}" id="R1T3" {% if not active %}disabled{% endif %}>{{ startingteams.3 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.4 }}" id="R1T4" {% if not active %}disabled{% endif %}>{{ startingteams.4 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.5 }}" id="R1T5" {% if not active %}disabled{% endif %}>{{ startingteams.5 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.6 }}" id="R1T6" {% if not active %}disabled{% endif %}>{{ startingteams.6 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.7 }}" id="R1T7" {% if not active %}disabled{% endif %}>{{ startingteams.7 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.8 }}" id="R1T8" {% if not active %}disabled{% endif %}>{{ startingteams.8 }}</button></li>
+        </ul>
+      </div>
+
+      <div id="round-two-west" class="round round-two">
+        <div class="round-num">ROUND 2<br/></div>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.17 }}" id="R2T1" {% if not active %}disabled{% endif %}>{{ formhold.series1 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.18 }}" id="R2T2" {% if not active %}disabled{% endif %}>{{ formhold.series2 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.19 }}" id="R2T3" {% if not active %}disabled{% endif %}>{{ formhold.series3 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.20 }}" id="R2T4" {% if not active %}disabled{% endif %}>{{ formhold.series4 }}</button></li>
+        </ul>
+      </div>
+
+      <div id="west-champions" class="round round-three">
+        <div class="round-num">WEST CHAMPIONS<br/></div>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.25 }}" id="R3T1" {% if not active %}disabled{% endif %}>{{ formhold.series9 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.26 }}" id="R3T2" {% if not active %}disabled{% endif %}>{{ formhold.series10 }}</button></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div id="championship" class="championship round-four">
+      <div class="final">
+        <i class="fa fa-trophy"></i>
+        <div class="round-num">FINALS<br/></div>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.29 }}" id="R4T1" {% if not active %}disabled{% endif %}>{{ formhold.series13 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.30 }}" id="R4T2" {% if not active %}disabled{% endif %}>{{ formhold.series14 }}</button></li>
+        </ul>
+
+        {% if active %}
+          <form method="post" id="submission-block" class="submission">
+            {% csrf_token %}
+            {% for key,val in formhold.items %}
+              {% if key == 'name' %}
+                <input type="text" name="{{ key }}" id="{{ key }}" value="{{ val }}" onfocus="ClearField(this)"><br/>
+              {% else %}
+                <input type="hidden" name="{{ key }}" id="{{ key }}" value="{{ val }}">
+              {% endif %}
+            {% endfor %}
+            <button type="button" id="reset" onclick="ResetBracket()">Reset</button>
+            <button type="submit" id="submit">Submit</button>
+          </form>
+        {% else %}
+          <div class="submission">
+            <input class="form-off" type="text" id="name" value="Type first and last name..." disabled><br/>
+            <button class="form-off" id="reset" disabled>Reset</button>
+            <button class="form-off" id="submit" disabled>Submit</button>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+    <div class="split split-two">
+      <div id="east-champions" class="round round-three">
+        <div class="round-num">EAST CHAMPIONS<br/></div>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.27 }}" id="R3T3" {% if not active %}disabled{% endif %}>{{ formhold.series11 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.28 }}" id="R3T4" {% if not active %}disabled{% endif %}>{{ formhold.series12 }}</button></li>
+        </ul>
+      </div>
+
+      <div id="round-two-east" class="round round-two">
+        <div class="round-num">ROUND 2<br/></div>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.21 }}" id="R2T5" {% if not active %}disabled{% endif %}>{{ formhold.series5 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.22 }}" id="R2T6" {% if not active %}disabled{% endif %}>{{ formhold.series6 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.23 }}" id="R2T7" {% if not active %}disabled{% endif %}>{{ formhold.series7 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.24 }}" id="R2T8" {% if not active %}disabled{% endif %}>{{ formhold.series8 }}</button></li>
+        </ul>
+      </div>
+
+      <div id="round-one-east" class="round round-one">
+        <div class="round-num">ROUND 1<br/></div>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.9 }}" id="R1T9" {% if not active %}disabled{% endif %}>{{ startingteams.9 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.10 }}" id="R1T10" {% if not active %}disabled{% endif %}>{{ startingteams.10 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.11 }}" id="R1T11" {% if not active %}disabled{% endif %}>{{ startingteams.11 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.12 }}" id="R1T12" {% if not active %}disabled{% endif %}>{{ startingteams.12 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.13 }}" id="R1T13" {% if not active %}disabled{% endif %}>{{ startingteams.13 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.14 }}" id="R1T14" {% if not active %}disabled{% endif %}>{{ startingteams.14 }}</button></li>
+        </ul>
+        <ul class="matchup">
+          <li class="team"><button class="team-button {{ teamclasses.15 }}" id="R1T15" {% if not active %}disabled{% endif %}>{{ startingteams.15 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.16 }}" id="R1T16" {% if not active %}disabled{% endif %}>{{ startingteams.16 }}</button></li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+{% endblock %}

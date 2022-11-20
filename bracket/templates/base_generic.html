@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css_bootstrap/bootstrap.css' %}">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Holtwood+One+SC' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script|Herr+Von+Muellerhoff' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+
+  {% block title %}<title>CSM Stanley Cup Brackets 2023</title>{% endblock %}
+
+</head>
+
+<body>
+  {% block header %}
+  <header class="header">
+    <p class="intro">CSM STANLEY CUP</p>
+    <h1 class="headline">TOURNAMENT</h1>
+    <p class="year"><i class="fa fa-star"></i>2023<i class="fa fa-star"></i></p>
+    <p class="host">HOSTS: TYLER EVANS, COREY RANDALL</p>
+  </header>
+  <hr style="border: none; height: 1px; background-color: #e1e1e1; padding: 0px; margin: 0px;">
+  {% endblock %}
+
+  {% block footer %}
+  <footer class="footer">
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'master' %}">Master</a>
+    <a href="{% url 'standings' show_img='MasterBracket' sort=1 %}">Standings</a>
+    <a href="{% url 'submission' %}">Submission</a>
+  </footer>
+  <hr style="border: none; position: sticky; height: 1px; top: 60px; background-color: #e1e1e1; padding: 0px; margin: 0px;">
+  {% endblock %}
+
+  {% include "messages.html" %}
+
+  {% block content %}{% endblock %}
+
+  {% load static %}
+  <script src="{% static 'script.js' %}"></script>
+
+</body>
+
+</html>

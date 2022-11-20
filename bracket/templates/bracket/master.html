@@ -1,0 +1,157 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+{% load filters %}
+{% load static %}
+<section>
+  <div class="flexbox-master">
+    <div class="col-master col-image">
+      <center>
+      <img src="{% static 'images/Brackets/MasterBracket.png' %}">
+      </center>
+    </div>
+
+    <div class="col-master col-rounds scores">
+      {% if round4 %}
+      <h1>Stanley Cup Finals<hr></h1>
+      {% for series in round4 %}
+      <table border="1;">
+        <thead>
+          <tr>
+            <th>Team</th>
+            {% for i in 1|range_to:7 %}
+            <th>Game {{ i }}</th>
+            {% endfor %}
+            <th># Wins</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ series.Away }}</td>
+            {% for i in 1|range_to:7 %}
+            <td>{{ series|get_away_score:i }}</td>
+            {% endfor %}
+            <td>{{ series.AwayWins }}</td>
+          </tr>
+          <tr>
+            <td>{{ series.Home }}</td>
+            {% for i in 1|range_to:7 %}
+            <td>{{ series|get_home_score:i }}</td>
+            {% endfor %}
+            <td>{{ series.HomeWins }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {% endfor %}
+      {% endif %}
+
+      {% if round3 %}
+      <h1>Conference Finals<hr></h1>
+      {% for series in round3 %}
+      <table border="1;">
+        <thead>
+          <tr>
+            <th>Team</th>
+            {% for i in 1|range_to:7 %}
+            <th>Game {{ i }}</th>
+            {% endfor %}
+            <th># Wins</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ series.Away }}</td>
+            {% for i in 1|range_to:7 %}
+            <td>{{ series|get_away_score:i }}</td>
+            {% endfor %}
+            <td>{{ series.AwayWins }}</td>
+          </tr>
+          <tr>
+            <td>{{ series.Home }}</td>
+            {% for i in 1|range_to:7 %}
+            <td>{{ series|get_home_score:i }}</td>
+            {% endfor %}
+            <td>{{ series.HomeWins }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {% endfor %}
+      {% endif %}
+
+      {% if round1 %}
+      <div class="scores-rounds">
+      <h1>Round 2<hr></h1>
+      <div class="no-gap">
+      {% for series in round1 %}
+      <table border="1;">
+        <thead>
+          <tr>
+            <th>Team</th>
+            {% for i in 1|range_to:7 %}
+            <th>Game {{ i }}</th>
+            {% endfor %}
+            <th># Wins</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ series.Away }}</td>
+            {% for i in 1|range_to:7 %}
+            <td>{{ series|get_away_score:i }}</td>
+            {% endfor %}
+            <td>{{ series.AwayWins }}</td>
+          </tr>
+          <tr>
+            <td>{{ series.Home }}</td>
+            {% for i in 1|range_to:7 %}
+            <td>{{ series|get_home_score:i }}</td>
+            {% endfor %}
+            <td>{{ series.HomeWins }}</td>
+          </tr>
+        </tbody>
+      </table>
+      {% endfor %}
+      </div>
+      </div>
+      {% endif %}
+
+      {% if round1 %}
+      <div class="scores-rounds">
+        <h1>Round 1<hr></h1>
+        <div class="no-gap">
+        {% for series in round1 %}
+        <table border="1;">
+          <thead>
+            <tr>
+              <th>Team</th>
+              {% for i in 1|range_to:7 %}
+              <th>Game {{ i }}</th>
+              {% endfor %}
+              <th># Wins</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ series.Away }}</td>
+              {% for i in 1|range_to:7 %}
+              <td>{{ series|get_away_score:i }}</td>
+              {% endfor %}
+              <td>{{ series.AwayWins }}</td>
+            </tr>
+            <tr>
+              <td>{{ series.Home }}</td>
+              {% for i in 1|range_to:7 %}
+              <td>{{ series|get_home_score:i }}</td>
+              {% endfor %}
+              <td>{{ series.HomeWins }}</td>
+            </tr>
+          </tbody>
+        </table>
+        {% endfor %}
+      </div>
+      </div>
+      {% endif %}
+    </div>
+
+</section>
+{% endblock %}

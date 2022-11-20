@@ -1,0 +1,67 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<section id="home-block" class="home">
+  <p class="body-txt">
+    <b>Welcome!</b> We hope you're excited to participate in this year's CSM Stanley Cup
+    Tournament. Use the navigation bar at the top of the page to check out the
+    rest of the site. The <b>Home</b> page is used as a blog by the administrators.
+    Check back often to see highlights about exciting game moments, MVPs, and more. The
+    <b>Master</b> page compiles the real results and scores from each NHL game in the
+    tournament. To check how well you are doing compared to your peers, visit the
+    <b>Standings</b> page. But most importantly, fill out the form on the <b>Submission</b>
+    page before ...date here... to make sure you're included in all the fun!!
+  </p>
+
+  {% load static %}
+  {% for post in blogposts %}
+  {% if forloop.counter0|divisibleby:2 %}
+  <div class="blogs">
+    <div class="blog-hdr">
+      <h2 style="float: left;">{{ post.title }}</h2>
+      <h2 style="float: right;">{{ post.date }}</h2>
+    </div>
+    <div class="blog-body">
+      <div class="blog-txt">
+        {% if post.embedlink or post.image %}
+        <p>{{ post.message }}</p>
+        {% else %}
+        <p class="blog-txt-only">{{ post.message }}</p>
+        {% endif %}
+      </div>
+      <div class="blog-media">
+        {% if post.embedlink %}
+        <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% elif post.image %}
+        <img src="{% static post.image.url|cut:'bracket/static/' %}" alt="">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="blogs">
+    <div class="blog-hdr">
+      <h2 style="float: left;">{{ post.title }}</h2>
+      <h2 style="float: right;">{{ post.date }}</h2>
+    </div>
+    <div class="blog-body">
+      <div class="blog-media">
+        {% if post.embedlink %}
+        <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        {% elif post.image %}
+        <img src="{% static post.image.url|cut:'bracket/static/' %}" alt="">
+        {% endif %}
+      </div>
+      <div class="blog-txt">
+        {% if post.embedlink or post.image %}
+        <p>{{ post.message }}</p>
+        {% else %}
+        <p class="blog-text-only">{{ post.message }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+</section>
+{% endblock %}
