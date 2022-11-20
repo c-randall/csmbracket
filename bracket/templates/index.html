@@ -22,13 +22,17 @@
       <h2 style="float: right;">{{ post.date }}</h2>
     </div>
     <div class="blog-body">
-      <div class="blog-txt">
+
         {% if post.embedlink or post.image %}
-        <p>{{ post.message }}</p>
+        <div class="blog-txt">
+        {{ post.message|safe }}
+        </div>
         {% else %}
-        <p class="blog-txt-only">{{ post.message }}</p>
+        <div class="blog-txt-only">
+          {{ post.message|safe }}
+        </div>
         {% endif %}
-      </div>
+
       <div class="blog-media">
         {% if post.embedlink %}
         <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -36,6 +40,7 @@
         <img src="{% static post.image.url|cut:'bracket/static/' %}" alt="">
         {% endif %}
       </div>
+      
     </div>
   </div>
   {% else %}

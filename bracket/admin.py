@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Entry, Series, MasterBracket, StartingTeam, AdminControl, BlogPost, RoundDates
+from .models import Entry, Series, MasterBracket, StartingTeam, AdminControl, BlogPost
 
 from django.forms import TextInput, Textarea
 from django.db import models
@@ -42,7 +42,3 @@ class AdminPageControl(admin.ModelAdmin):
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'date',)
-
-@admin.register(RoundDates)
-class RoundDatesAdmin(admin.ModelAdmin):
-    pass

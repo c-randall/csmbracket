@@ -20,10 +20,10 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
 .blogs .blog-hdr {padding: 0 20px;}
 .blogs h2 {padding: 5px; margin: 0px; font-family: "Istok Web", sans-serif; color: white;}
 .blogs .blog-body {flex-wrap: wrap; display: flex; background: #e1e1e1; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; clear: both;}
-.blogs .blog-media {position: relative; overflow: hidden; width: calc(560px/1.5); height: calc(315px/1.5); padding: 0px; margin: 10px auto; border-width: 0px; border-radius: 10px; z-index: 2;}
+.blogs .blog-media {position: relative; overflow: hidden; width: calc(560px/1.5); height: calc(315px/1.5); padding: 0px; margin: 15px auto; border-width: 0px; border-radius: 10px; z-index: 2;}
 .blogs .blog-media iframe {position: relative; z-index: -1; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
 .blogs .blog-media img {position:relative; z-index: -1; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
-.blogs .blog-body .blog-txt {padding: 0 0 0 20px; display: inline-block; width: calc(100% - 560px/1.5 - 40px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin: 0 auto;}
+.blogs .blog-body .blog-txt {padding: 0 0 0 20px; display: inline-block; width: calc(100% - 560px/1.5 - 80px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin: 0 auto;}
 
 .master button {cursor: not-allowed; pointer-events: none;}
 .bracket {display: block; overflow: hidden; font-size: 14px; padding: 40px 0;}
@@ -85,7 +85,7 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
 .col-rounds {}
 
 .standings {display: block;}
-.standings p {padding: 0 20px;}
+.standings p {width: 70%; min-width: 600px; margin: 20px auto; text-align: justify; text-justify: inter-word;}
 .standingstable {font-size: 14px; font-family: "Istok Web", sans-serif;}
 .standingstable th {background: #21314D; padding: 5px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 80px;}
 .standingstable td {padding: 5px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 0;}
@@ -119,7 +119,7 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
   .header h1 {font-size: 3em; margin: 10px 0;}
   .blogs .blog-body {flex-wrap: wrap}
   .blogs .blog-body .blog-media {margin: 10px auto;}
-  .blogs .blog-body .blog-txt {width: 100%;}
+  .blogs .blog-body .blog-txt {width: 90%; margin: 0 auto; padding: 0;}
   .flexbox-standings {flex-wrap: wrap;}
   .flexbox-master {flex-wrap: wrap;}
   .col-image {margin-top: 20px; position: relative; top: 0;}
@@ -137,7 +137,7 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
   .header p.year {font-size: 18px; margin: 5px 0 10px;}
   .blogs .blog-body {flex-wrap: wrap;}
   .blogs .blog-body .blog-media {margin: 10px auto;}
-  .blogs .blog-body .blog-txt {width: 100%;}
+  .blogs .blog-body .blog-txt {width: 90%; margin: 0 auto; padding: 0;}
   .flexbox-standings {flex-wrap: wrap;}
   .flexbox-master {flex-wrap: wrap;}
   .col-image {margin-top: 20px; position: relative; top: 0;}

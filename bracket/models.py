@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 
+from tinymce import models as tinymce_models
+
 # Create your models here.
 
 class Entry(models.Model):
@@ -139,21 +141,15 @@ class AdminControl(models.Model):
 class BlogPost(models.Model):
     title = models.CharField(max_length=50)
     date = models.DateTimeField(null=True, default=datetime.datetime.now())
-    message = models.TextField()
+    message = tinymce_models.HTMLField()
     image = models.ImageField(upload_to='bracket/static/images/BlogPosts', blank=True)
     embedlink = models.CharField(max_length=1000, blank=True)
 
     class Meta:
         ordering = ('-date',)
 
+        verbose_name = 'Blog Post'
+        verbose_name_plural = 'Blog Posts'
+
     def __str__(self):
         return self.title
-
-class RoundDates(models.Model):
-    Round1 = models.CharField(max_length=20)
-    Round2 = models.CharField(max_length=20)
-    Round3 = models.CharField(max_length=20)
-    Round4 = models.CharField(max_length=20)
-
-    def __str__(self):
-        return 'rounddates'
