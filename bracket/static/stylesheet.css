@@ -142,6 +142,7 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
   .flexbox-standings {flex-wrap: wrap;}
   .flexbox-master {flex-wrap: wrap;}
   .col-image {margin-top: 20px; position: relative; top: 0;}
+  .standings p {width: 80%;}
   .scores {max-height: none;}
   .col-table {margin: 0 auto;}
   .col-bracket {margin: 60px auto;}
