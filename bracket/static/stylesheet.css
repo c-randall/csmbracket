@@ -85,7 +85,7 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
 .col-rounds {}
 
 .standings {display: block;}
-.standings p {width: 70%; min-width: 600px; margin: 20px auto; text-align: justify; text-justify: inter-word;}
+.standings p {width: 70%; margin: 20px auto; text-align: justify; text-justify: inter-word;}
 .standingstable {font-size: 14px; font-family: "Istok Web", sans-serif;}
 .standingstable th {background: #21314D; padding: 5px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 80px;}
 .standingstable td {padding: 5px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 0;}
@@ -123,6 +123,7 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
   .flexbox-standings {flex-wrap: wrap;}
   .flexbox-master {flex-wrap: wrap;}
   .col-image {margin-top: 20px; position: relative; top: 0;}
+  .standings p {width: 80%;}
   .scores {max-height: none;}
   .col-table {margin: 0 auto;}
   .col-bracket {margin: 60px auto;}

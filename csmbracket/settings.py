@@ -39,7 +39,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['www.csmbracket.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['csmbracket.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -134,7 +134,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [ BASE_DIR / 'bracket/static' ]
 
-STATIC_ROOT = '/var/www/csmbracket/static'
+STATIC_ROOT = '/home/csmbracket/csmbracket/bracket/static'
 
 MEDIA_URL = 'images/'
 MEDIA_ROOT = BASE_DIR / 'bracket/static/images'
