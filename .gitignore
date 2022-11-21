@@ -17,3 +17,7 @@ Thumbs.db
 # Python stuff
 __pycache__/
 *.py[cod]
+
+# Extra site folders
+bracket/static/images/SVG_Files/*
+bracket/static/images/Tyler_Files/*
