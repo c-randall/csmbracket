@@ -1,11 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<section id="bracket-block" class="bracket" style="margin-bottom: 10px;">
+<section id="bracket-block" class="bracket">
   <div class="container">
 
     <div class="split split-one">
-      <div id="round-one-west" class="round round-one">
+      <div class="round round-one">
         <div class="round-num">ROUND 1<br/></div>
         <ul class="matchup">
           <li class="team"><button class="team-button {{ teamclasses.1 }}" id="R1T1" {% if not active %}disabled{% endif %}>{{ startingteams.1 }}</button></li>
@@ -25,7 +25,7 @@
         </ul>
       </div>
 
-      <div id="round-two-west" class="round round-two">
+      <div class="round round-two">
         <div class="round-num">ROUND 2<br/></div>
         <ul class="matchup">
           <li class="team"><button class="team-button {{ teamclasses.17 }}" id="R2T1" {% if not active %}disabled{% endif %}>{{ formhold.series1 }}</button></li>
@@ -37,7 +37,7 @@
         </ul>
       </div>
 
-      <div id="west-champions" class="round round-three">
+      <div class="round round-three">
         <div class="round-num">WEST CHAMPIONS<br/></div>
         <ul class="matchup">
           <li class="team"><button class="team-button {{ teamclasses.25 }}" id="R3T1" {% if not active %}disabled{% endif %}>{{ formhold.series9 }}</button></li>
@@ -47,7 +47,7 @@
 
     </div>
 
-    <div id="championship" class="championship round-four">
+    <div class="championship round-four">
       <div class="final">
         <i class="fa fa-trophy"></i>
         <div class="round-num">FINALS<br/></div>
@@ -57,7 +57,7 @@
         </ul>
 
         {% if active %}
-          <form method="post" id="submission-block" class="submission">
+          <form method="post" class="submission">
             {% csrf_token %}
             {% for key,val in formhold.items %}
               {% if key == 'name' %}
@@ -81,7 +81,7 @@
     </div>
 
     <div class="split split-two">
-      <div id="east-champions" class="round round-three">
+      <div class="round round-three">
         <div class="round-num">EAST CHAMPIONS<br/></div>
         <ul class="matchup">
           <li class="team"><button class="team-button {{ teamclasses.27 }}" id="R3T3" {% if not active %}disabled{% endif %}>{{ formhold.series11 }}</button></li>
@@ -89,7 +89,7 @@
         </ul>
       </div>
 
-      <div id="round-two-east" class="round round-two">
+      <div class="round round-two">
         <div class="round-num">ROUND 2<br/></div>
         <ul class="matchup">
           <li class="team"><button class="team-button {{ teamclasses.21 }}" id="R2T5" {% if not active %}disabled{% endif %}>{{ formhold.series5 }}</button></li>
@@ -101,7 +101,7 @@
         </ul>
       </div>
 
-      <div id="round-one-east" class="round round-one">
+      <div class="round round-one">
         <div class="round-num">ROUND 1<br/></div>
         <ul class="matchup">
           <li class="team"><button class="team-button {{ teamclasses.9 }}" id="R1T9" {% if not active %}disabled{% endif %}>{{ startingteams.9 }}</button></li>

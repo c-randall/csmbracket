@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-<section id="home-block" class="home">
+<section class="home">
   <p class="body-txt">
     <b>Welcome!</b> We hope you're excited to participate in this year's CSM Stanley Cup
     Tournament. Use the navigation bar at the top of the page to check out the
@@ -40,7 +40,7 @@
         <img src="{% static post.image.url|cut:'bracket/static/' %}" alt="">
         {% endif %}
       </div>
-      
+
     </div>
   </div>
   {% else %}
