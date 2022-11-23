@@ -8,22 +8,23 @@ body {background: #e1e1e1; font-family: "Istok Web", sans-serif; margin: 0; min-
 .header p.year i {font-size: 12px; vertical-align: middle; padding: 0 10px;}
 .header p.host {font-family: "Abel", sans-serif; color: #D2492A; letter-spacing: 6px; font-size: 1.1em; margin: 0 0 -15px;}
 
-.footer {position: sticky; top: 0px; background: #21314D; height: 60px; width: 100%; text-align: center; z-index: 100;}
-.footer a {color: white; font-size: 14px; padding: 0 20px 0; position: relative; top: 20px;}
-.footer a:hover {color: #D2492A;}
+.nav-bar {position: sticky; top: 0px; background: #21314D; height: 60px; width: 100%; text-align: center; z-index: 100;}
+.nav-bar a {color: white; font-size: 14px; padding: 0 20px 0; position: relative; top: 20px;}
+.nav-bar a:hover {color: #D2492A;}
+.nav-divider {border: none; position: sticky; height: 1px; top: 60px; background-color: #e1e1e1; padding: 0px; margin: 0px;}
 
 .home {display: block;}
-.home .body-txt {width: 70%; min-width: 600px; margin: 40px auto; text-align: justify; text-justify: inter-word;}
-.home .body-txt b {color: #D2492A;}
+.home .body-txt {font-size: 14px; width: 70%; margin: 40px auto; text-align: justify; text-justify: inter-word;}
+.home .body-txt b {font-size: 14px; color: #D2492A;}
 
-body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px auto; border-width: 2px; border-style: solid; border-color: black; border-radius: 10px;}
+body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2px; border-style: solid; border-color: black; border-radius: 10px;}
 .blogs .blog-hdr {padding: 0 20px;}
 .blogs h2 {padding: 5px; margin: 0px; font-family: "Istok Web", sans-serif; color: white;}
 .blogs .blog-body {flex-wrap: wrap; display: flex; background: #e1e1e1; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; clear: both;}
 .blogs .blog-media {position: relative; overflow: hidden; width: calc(560px/1.5); height: calc(315px/1.5); padding: 0px; margin: 15px auto; border-width: 0px; border-radius: 10px; z-index: 2;}
-.blogs .blog-media iframe {position: relative; z-index: -1; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
+.blogs .blog-media iframe {position: relative; z-index: 2; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
 .blogs .blog-media img {position:relative; z-index: -1; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
-.blogs .blog-body .blog-txt {padding: 0 0 0 20px; display: inline-block; width: calc(100% - 560px/1.5 - 80px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin: 0 auto;}
+.blogs .blog-body .blog-txt {padding: 0 0 0 20px; display: inline-block; width: calc(100% - 560px/1.5 - 80px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin: 0 auto; font-size: 14px;}
 
 .master button {cursor: not-allowed; pointer-events: none;}
 .bracket {display: block; overflow: hidden; font-size: 14px; padding: 40px 0;}
@@ -65,9 +66,6 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
 .submission .form-off:disabled {color: black; background: lightgrey; opacity: 0.5;}
 .submission input:disabled {color: black; background: lightgrey; opacity: 0.5;}
 
-.nhl-image {display: block; align-items: center; position: relative; top: 10px;}
-.nhl-image img {height: 130px; width: auto; margin: 0 0 25px;}
-
 .scores {display: block;}
 .scores {margin: 0 auto; width: 100%; overflow-y: auto; max-height: calc(100vh - 60px);}
 .scores h1 {margin: 0 auto; padding: 20px 0 0 0; width: 90%; background: #e1e1e1; position: sticky; top: 0;}
@@ -85,7 +83,7 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
 .col-rounds {}
 
 .standings {display: block;}
-.standings p {width: 70%; margin: 20px auto; text-align: justify; text-justify: inter-word;}
+.standings p {width: 70%; margin: 20px auto; text-align: justify; text-justify: inter-word; font-size: 14px;}
 .standingstable {font-size: 14px; font-family: "Istok Web", sans-serif;}
 .standingstable th {background: #21314D; padding: 5px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 80px;}
 .standingstable td {padding: 5px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 0;}
@@ -115,37 +113,52 @@ body .blogs {background: #21314D; width: 70%; min-width: 600px; margin: 40px aut
   .split, .championship {width: 90%; margin: 35px 5%;}
   .championship {-webkit-box-ordinal-group: 3; -moz-box-ordinal-group: 3; -ms-flex-order: 3; -webkit-order: 3; order: 3;}
   .split {border-bottom: 1px solid #b6b6b6; padding-bottom: 20px;}
-  .header p.intro {font-size: 1.6em;}
-  .header h1 {font-size: 3em; margin: 10px 0;}
+  .header p.intro {font-size: 1.4em; margin-bottom: -30px;}
+  .header h1 {font-size: 2.8em; margin: 10px 0 15px;}
+  .header p.host {font-size: 1em; letter-spacing: 4px;}
   .blogs .blog-body {flex-wrap: wrap}
+  .blogs .blog-media {width: calc(560px/1.75); height: calc(315px/1.75);}
+  .blogs .blog-media iframe {width: calc(560px/1.75); height: calc(315px/1.75);}
+  .blogs .blog-media img {width: calc(560px/1.75); height: calc(315px/1.75);}
   .blogs .blog-body .blog-media {margin: 10px auto;}
   .blogs .blog-body .blog-txt {width: 90%; margin: 0 auto; padding: 0;}
   .flexbox-standings {flex-wrap: wrap;}
   .flexbox-master {flex-wrap: wrap;}
   .col-image {margin-top: 20px; position: relative; top: 0;}
+  .home .body-txt {width: 80%;}
+  body .blogs {width: 80%;}
   .standings p {width: 80%;}
   .scores {max-height: none;}
   .col-table {margin: 0 auto;}
   .col-bracket {margin: 60px auto;}
+  .final {padding: 20px 0;}
 }
 
 @media screen and (max-width: 400px) {
   .split {width: 95%; margin: 25px 2.5%;}
-  .round {width: 21%;}
   .round-num {font-size: 90%;}
-  .header p.intro {font-size: 1.15em; margin-bottom: -10px}
-  .header h1 {font-size: 2.15em; letter-spacing: 0;}
-  .header p.year {font-size: 18px; margin: 5px 0 10px;}
+  .header p.intro {font-size: 1.15em; margin-bottom: -26px;}
+  .header h1 {font-size: 2.15em; letter-spacing: 0; margin-bottom: 8px;}
+  .header p.year {font-size: 18px; margin: 5px 0 15px;}
+  .header p.host {font-size: 0.9em; letter-spacing: 4px;}
+  .nav-bar a {padding: 0 12px 0;}
+  .blogs h2 {font-size: 18px;}
   .blogs .blog-body {flex-wrap: wrap;}
+  .blogs .blog-media {width: calc(560px/2); height: calc(315px/2);}
+  .blogs .blog-media iframe {width: calc(560px/2); height: calc(315px/2);}
+  .blogs .blog-media img {width: calc(560px/2); height: calc(315px/2);}
   .blogs .blog-body .blog-media {margin: 10px auto;}
   .blogs .blog-body .blog-txt {width: 90%; margin: 0 auto; padding: 0;}
   .flexbox-standings {flex-wrap: wrap;}
   .flexbox-master {flex-wrap: wrap;}
   .col-image {margin-top: 20px; position: relative; top: 0;}
+  .home .body-txt {width: 80%;}
+  body .blogs {width: 80%;}
   .standings p {width: 80%;}
   .scores {max-height: none;}
   .col-table {margin: 0 auto;}
   .col-bracket {margin: 60px auto;}
+  .final {padding: 20px 0;}
 }
 
 Resources
