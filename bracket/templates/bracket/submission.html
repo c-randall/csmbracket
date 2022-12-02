@@ -1,6 +1,8 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+{% load filters %}
+{% load static %}
 <section id="bracket-block" class="bracket">
   <div class="container">
 
@@ -8,40 +10,54 @@
       <div class="round round-one">
         <div class="round-num">ROUND 1<br/></div>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.1 }}" id="R1T1" {% if not active %}disabled{% endif %}>{{ startingteams.1 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.2 }}" id="R1T2" {% if not active %}disabled{% endif %}>{{ startingteams.2 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.1 }}" id="R1T1" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.1|get_logo %}"><div class="sub-team" id="R1T1-team">{{ startingteams.1 }}</div></button></li>
+          <li class="team"><button class="team-button {{ teamclasses.2 }}" id="R1T2" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.2|get_logo %}"><div class="sub-team" id="R1T2-team">{{ startingteams.2 }}</div></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.3 }}" id="R1T3" {% if not active %}disabled{% endif %}>{{ startingteams.3 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.4 }}" id="R1T4" {% if not active %}disabled{% endif %}>{{ startingteams.4 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.3 }}" id="R1T3" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.3|get_logo %}"><div class="sub-team" id="R1T3-team">{{ startingteams.3 }}</div></button></li>
+          <li class="team"><button class="team-button {{ teamclasses.4 }}" id="R1T4" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.4|get_logo %}"><div class="sub-team" id="R1T4-team">{{ startingteams.4 }}</div></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.5 }}" id="R1T5" {% if not active %}disabled{% endif %}>{{ startingteams.5 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.6 }}" id="R1T6" {% if not active %}disabled{% endif %}>{{ startingteams.6 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.5 }}" id="R1T5" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.5|get_logo %}"><div class="sub-team" id="R1T5-team">{{ startingteams.5 }}</div></button></li>
+          <li class="team"><button class="team-button {{ teamclasses.6 }}" id="R1T6" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.6|get_logo %}"><div class="sub-team" id="R1T6-team">{{ startingteams.6 }}</div></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.7 }}" id="R1T7" {% if not active %}disabled{% endif %}>{{ startingteams.7 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.8 }}" id="R1T8" {% if not active %}disabled{% endif %}>{{ startingteams.8 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.7 }}" id="R1T7" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.7|get_logo %}"><div class="sub-team" id="R1T7-team">{{ startingteams.7 }}</div></button></li>
+          <li class="team"><button class="team-button {{ teamclasses.8 }}" id="R1T8" {% if not active %}disabled{% endif %}>
+            <img src="{% static startingteams.8|get_logo %}"><div class="sub-team" id="R1T8-team">{{ startingteams.8 }}</div></button></li>
         </ul>
       </div>
 
       <div class="round round-two">
         <div class="round-num">ROUND 2<br/></div>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.17 }}" id="R2T1" {% if not active %}disabled{% endif %}>{{ formhold.series1 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.18 }}" id="R2T2" {% if not active %}disabled{% endif %}>{{ formhold.series2 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.17 }}" id="R2T1" {% if not active %}disabled{% endif %}>
+            <img src="{% static formhold.series1|get_logo %}" onerror="this.style.display='none'"><div class="sub-team" id="R2T1-team">{{ formhold.series1 }}</div></button></li>
+          <li class="team"><button class="team-button {{ teamclasses.18 }}" id="R2T2" {% if not active %}disabled{% endif %}>
+            <img src="{% static formhold.series2|get_logo %}" onerror="this.style.display='none'"><div class="sub-team" id="R2T2-team">{{ formhold.series2 }}</div></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.19 }}" id="R2T3" {% if not active %}disabled{% endif %}>{{ formhold.series3 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.20 }}" id="R2T4" {% if not active %}disabled{% endif %}>{{ formhold.series4 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.19 }}" id="R2T3" {% if not active %}disabled{% endif %}>
+            <img src="{% static formhold.series3|get_logo %}" onerror="this.style.display='none'"><div class="sub-team" id="R2T3-team">{{ formhold.series3 }}</div></button></li>
+          <li class="team"><button class="team-button {{ teamclasses.20 }}" id="R2T4" {% if not active %}disabled{% endif %}>
+            <img src="{% static formhold.series4|get_logo %}" onerror="this.style.display='none'"><div class="sub-team" id="R2T4-team">{{ formhold.series4 }}</div></button></li>
         </ul>
       </div>
 
       <div class="round round-three">
         <div class="round-num">WEST CHAMPIONS<br/></div>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.25 }}" id="R3T1" {% if not active %}disabled{% endif %}>{{ formhold.series9 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.26 }}" id="R3T2" {% if not active %}disabled{% endif %}>{{ formhold.series10 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.25 }}" id="R3T1" {% if not active %}disabled{% endif %}>
+            <img src="{% static formhold.series9|get_logo %}" onerror="this.style.display='none'"><div class="sub-team" id="R3T1-team">{{ formhold.series9 }}</div></button></li>
+          <li class="team"><button class="team-button {{ teamclasses.26 }}" id="R3T2" {% if not active %}disabled{% endif %}>
+            <img src="{% static formhold.series10|get_logo %}" onerror="this.style.display='none'"><div class="sub-team" id="R3T2-team">{{ formhold.series10 }}</div></button></li>
         </ul>
       </div>
 
@@ -52,8 +68,10 @@
         <i class="fa fa-trophy"></i>
         <div class="round-num">FINALS<br/></div>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.29 }}" id="R4T1" {% if not active %}disabled{% endif %}>{{ formhold.series13 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.30 }}" id="R4T2" {% if not active %}disabled{% endif %}>{{ formhold.series14 }}</button></li>
+          <li class="team"><button class="team-button {{ teamclasses.29 }}" id="R4T1" {% if not active %}disabled{% endif %}>
+            <img src="{% static formhold.series13|get_logo %}" onerror="this.style.display='none'"><div class="sub-team" id="R4T1-team">{{ formhold.series13 }}</div></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.30 }}" id="R4T2" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R4T2-team">{{ formhold.series14 }}</div><img src="{% static formhold.series14|get_logo %}" onerror="this.style.display='none'"></button></li>
         </ul>
 
         {% if active %}
@@ -63,7 +81,7 @@
               {% if key == 'name' %}
                 <input type="text" name="{{ key }}" id="{{ key }}" value="{{ val }}" onfocus="ClearField(this)"><br/>
               {% else %}
-                <input type="hidden" name="{{ key }}" id="{{ key }}" value="{{ val }}">
+                <input type="text" name="{{ key }}" id="{{ key }}" value="{{ val }}">
               {% endif %}
             {% endfor %}
             <button type="button" id="reset" onclick="ResetBracket()">Reset</button>
@@ -84,40 +102,54 @@
       <div class="round round-three">
         <div class="round-num">EAST CHAMPIONS<br/></div>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.27 }}" id="R3T3" {% if not active %}disabled{% endif %}>{{ formhold.series11 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.28 }}" id="R3T4" {% if not active %}disabled{% endif %}>{{ formhold.series12 }}</button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.27 }}" id="R3T3" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R3T3-team">{{ formhold.series11 }}</div><img src="{% static formhold.series11|get_logo %}" onerror="this.style.display='none'"></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.28 }}" id="R3T4" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R3T4-team">{{ formhold.series12 }}</div><img src="{% static formhold.series12|get_logo %}" onerror="this.style.display='none'"></button></li>
         </ul>
       </div>
 
       <div class="round round-two">
         <div class="round-num">ROUND 2<br/></div>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.21 }}" id="R2T5" {% if not active %}disabled{% endif %}>{{ formhold.series5 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.22 }}" id="R2T6" {% if not active %}disabled{% endif %}>{{ formhold.series6 }}</button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.21 }}" id="R2T5" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R2T5-team">{{ formhold.series5 }}</div><img src="{% static formhold.series5|get_logo %}" onerror="this.style.display='none'"></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.22 }}" id="R2T6" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R2T6-team">{{ formhold.series6 }}</div><img src="{% static formhold.series6|get_logo %}" onerror="this.style.display='none'"></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.23 }}" id="R2T7" {% if not active %}disabled{% endif %}>{{ formhold.series7 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.24 }}" id="R2T8" {% if not active %}disabled{% endif %}>{{ formhold.series8 }}</button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.23 }}" id="R2T7" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R2T7-team">{{ formhold.series7 }}</div><img src="{% static formhold.series7|get_logo %}" onerror="this.style.display='none'"></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.24 }}" id="R2T8" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R2T8-team">{{ formhold.series8 }}</div><img src="{% static formhold.series8|get_logo %}" onerror="this.style.display='none'"></button></li>
         </ul>
       </div>
 
       <div class="round round-one">
         <div class="round-num">ROUND 1<br/></div>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.9 }}" id="R1T9" {% if not active %}disabled{% endif %}>{{ startingteams.9 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.10 }}" id="R1T10" {% if not active %}disabled{% endif %}>{{ startingteams.10 }}</button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.9 }}" id="R1T9" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T9-team">{{ startingteams.9 }}</div><img src="{% static startingteams.9|get_logo %}"></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.10 }}" id="R1T10" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T10-team">{{ startingteams.10 }}</div><img src="{% static startingteams.10|get_logo %}"></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.11 }}" id="R1T11" {% if not active %}disabled{% endif %}>{{ startingteams.11 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.12 }}" id="R1T12" {% if not active %}disabled{% endif %}>{{ startingteams.12 }}</button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.11 }}" id="R1T11" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T11-team">{{ startingteams.11 }}</div><img src="{% static startingteams.11|get_logo %}"></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.12 }}" id="R1T12" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T12-team">{{ startingteams.12 }}</div><img src="{% static startingteams.12|get_logo %}"></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.13 }}" id="R1T13" {% if not active %}disabled{% endif %}>{{ startingteams.13 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.14 }}" id="R1T14" {% if not active %}disabled{% endif %}>{{ startingteams.14 }}</button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.13 }}" id="R1T13" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T13-team">{{ startingteams.13 }}</div><img src="{% static startingteams.13|get_logo %}"></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.14 }}" id="R1T14" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T14-team">{{ startingteams.14 }}</div><img src="{% static startingteams.14|get_logo %}"></button></li>
         </ul>
         <ul class="matchup">
-          <li class="team"><button class="team-button {{ teamclasses.15 }}" id="R1T15" {% if not active %}disabled{% endif %}>{{ startingteams.15 }}</button></li>
-          <li class="team"><button class="team-button {{ teamclasses.16 }}" id="R1T16" {% if not active %}disabled{% endif %}>{{ startingteams.16 }}</button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.15 }}" id="R1T15" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T15-team">{{ startingteams.15 }}</div><img src="{% static startingteams.15|get_logo %}"></button></li>
+          <li class="team"><button class="team-button-right {{ teamclasses.16 }}" id="R1T16" {% if not active %}disabled{% endif %}>
+            <div class="sub-team" id="R1T16-team">{{ startingteams.16 }}</div><img src="{% static startingteams.16|get_logo %}"></button></li>
         </ul>
       </div>
 

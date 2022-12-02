@@ -6,6 +6,143 @@ import os
 import base64
 from io import StringIO, BytesIO
 
+from .models import Series, Entry, AdminControl, StartingTeam
+
+# from models import Series, StartingTeam
+
+def update_all_func(reset=False, forced=False):
+    if reset == True:
+        entryquery = Entry.objects.all().filter(participating=True)
+        for entry in entryquery:
+            img_name = entry.name.replace(' ', '_')
+            img_path = 'bracket/static/images/Brackets/'+img_name+'.png'
+            teams = [entry.__dict__['series'+str(i+1)] for i in range(15)]
+            first_bracket(img_name, teams)
+
+    AdminFlags = AdminControl.objects.all()[0]
+    SeriesCount = Series.objects.all().filter(isComplete=True).count()
+
+    if forced: AdminFlags.SeriesTracker = 0
+
+    if AdminFlags.SeriesTracker != SeriesCount:
+        scores = np.array([10, 10, 10, 10, 10, 10, 10, 10, 25, 25, 25, 25, 50, 50, 100])
+
+        entriesquery = Entry.objects.all().filter(participating=True)
+        seriescomplete = Series.objects.order_by('num').filter(isComplete=True)
+        seriesincomplete = Series.objects.order_by('num').filter(isComplete=False)
+
+        for entry in entriesquery:
+            choice_matrix = np.full( (15), np.nan )
+
+            entry.points = 0
+            entry.points_potential = 0
+            entry.tpp = 380
+
+            for series in seriescomplete:
+                if series.Winner == getattr(entry, 'series'+str(series.num)):
+                    entry.points += scores[int(series.num)-1]
+                    choice_matrix[int(series.num)-1] = 1
+                else:
+                    choice_matrix[int(series.num)-1] = 0
+
+            for series in seriesincomplete:
+                choice_winner = getattr(entry, 'series'+str(series.num))
+                if not StartingTeam.objects.get(Name=choice_winner).IsEliminated:
+                    entry.points_potential += scores[int(series.num)-1]
+                else:
+                    choice_matrix[int(series.num)-1] = 0
+
+            entry.tpp = entry.points + entry.points_potential
+            update_entry_bracket(entry, choice_matrix)
+            entry.save()
+
+        AdminFlags.SeriesTracker = SeriesCount
+        AdminFlags.save()
+
+        update_master_bracket()
+
+def update_master_bracket():
+    alpha = 0.5
+
+    xvec0 = np.array([50, 50, 50, 50, 50, 50, 50, 50, 1250, 1250, 1250, 1250,
+                      1250, 1250, 1250, 1250,])
+    yvec0 = np.array([50, 225, 375, 550, 750, 925, 1075, 1250, 50, 225, 375,
+                      550, 750, 925, 1075, 1250])
+
+    masterbracket = Image.open('bracket/static/images/Brackets/MasterBracket.png')
+    redX = Image.open('bracket/static/images/PNG_Files/RedX.png')
+
+    seriescomplete = Series.objects.all().filter(isComplete=True)
+
+    for i,series in enumerate(seriescomplete):
+        Home = Image.open('bracket/static/images/PNG_Files/'+series.Home+'Circle.png')
+        Away = Image.open('bracket/static/images/PNG_Files/'+series.Away+'Circle.png')
+
+        if series.Winner == series.Home:
+            masterbracket.paste(Home, (series.XPos,series.YPos))
+
+            GreyOut = Image.blend(Away, redX, alpha)
+            loser = StartingTeam.objects.all().get(Name=series.Loser)
+
+            if i < 8:
+                ULC_XPos = xvec0[loser.Index-1]
+                ULC_YPos = yvec0[loser.Index-1]
+
+            else:
+                depseries = Series.objects.all().filter(DeterminesSeries=series.num)
+
+                if series.Loser == depseries[0].Winner:
+                    ULC_XPos = depseries[0].XPos
+                    ULC_YPos = depseries[0].YPos
+                else:
+                    ULC_XPos = depseries[1].XPos
+                    ULC_YPos = depseries[1].YPos
+
+            masterbracket.paste(GreyOut, (ULC_XPos,ULC_YPos))
+
+        else:
+            masterbracket.paste(Away, (series.XPos,series.YPos))
+
+            GreyOut = Image.blend(Home, redX, alpha)
+            loser = StartingTeam.objects.all().get(Name=series.Loser)
+
+            if i < 8:
+                ULC_XPos = xvec0[loser.Index-1]
+                ULC_YPos = yvec0[loser.Index-1]
+
+            else:
+                depseries = Series.objects.all().filter(DeterminesSeries=series.num)
+
+                if series.Loser == depseries[0].Winner:
+                    ULC_XPos = depseries[0].XPos
+                    ULC_YPos = depseries[0].YPos
+                else:
+                    ULC_XPos = depseries[1].XPos
+                    ULC_YPos = depseries[1].YPos
+
+            masterbracket.paste(GreyOut, (ULC_XPos,ULC_YPos))
+
+        masterbracket.save('bracket/static/images/Brackets/MasterBracket.png')
+
+def update_entry_bracket(entry, choice_matrix):
+
+    seriesquery = Series.objects.all().order_by('num')
+
+    name = entry.name.replace(' ', '_')
+    bracket = Image.open('bracket/static/images/Brackets/'+name+'.png')
+
+    greenCir = Image.open('bracket/static/images/PNG_Files/GreenCircle.png')
+    redX = Image.open('bracket/static/images/PNG_Files/RedX.png')
+
+    for i,series in enumerate(seriesquery):
+        if choice_matrix[i] == 1:
+            bracket.paste(greenCir, (series.XPos,series.YPos), greenCir)
+
+        elif choice_matrix[i] == 0:
+            bracket.paste(redX, (series.XPos,series.YPos), redX)
+
+    bracket.save('bracket/static/images/Brackets/'+name+'.png')
+
 def draw_name(bracket,name):
     bw,bh = bracket.size
 
@@ -18,7 +155,6 @@ def draw_name(bracket,name):
 def base_bracket(teams):
     xvec = np.array([50, 50, 50, 50, 50, 50, 50, 50, 1250, 1250, 1250, 1250,
                      1250, 1250, 1250, 1250,])
-
     yvec = np.array([50, 225, 375, 550, 750, 925, 1075, 1250, 50, 225, 375,
                      550, 750, 925, 1075, 1250])
 
@@ -28,7 +164,17 @@ def base_bracket(teams):
         overlay = Image.open('bracket/static/images/PNG_Files/'+n+'Circle.png')
         bracket.paste(overlay, (int(xvec[i]), int(yvec[i])))
 
+    xvec = np.array([200, 200, 200, 200, 1100, 1100, 1100, 1100, 350, 350, 950,
+                     950, 500, 800, 650])
+    yvec = np.array([138, 462, 838, 1162, 138, 462, 838, 1162, 300, 1000, 300,
+                     1000, 650, 650, 1214])
+
+    for i in range(15):
+        overlay = Image.open('bracket/static/images/PNG_Files/Grey.png')
+        bracket.paste(overlay, (int(xvec[i]), int(yvec[i])))
+
     bracket.save('bracket/static/images/Brackets/BaseBracket.png', 'PNG')
+    bracket.save('bracket/static/images/Brackets/MasterBracket.png', 'PNG')
 
 def master_bracket(teams,colored):
     xvec = np.array([50, 50, 50, 50, 50, 50, 50, 50, 1250, 1250, 1250, 1250,

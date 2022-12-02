@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Entry, Series, MasterBracket, StartingTeam, AdminControl, BlogPost
+from .models import Entry, Series, StartingTeam, AdminControl, BlogPost
 
 from django.forms import TextInput, Textarea
 from django.db import models
@@ -25,18 +25,13 @@ class SeriesAdmin(admin.ModelAdmin):
     list_display =  base_list + game_list
     list_editable = game_list
 
-@admin.register(MasterBracket)
-class MasterAdmin(admin.ModelAdmin):
-    pass
-
 @admin.register(StartingTeam)
 class StartingTeamsAdmin(admin.ModelAdmin):
     list_display = ('Index', 'IsEliminated', 'Name', 'DivisionRank', 'RegSeasonRank')
-    list_editable = ('IsEliminated',)
 
 @admin.register(AdminControl)
 class AdminPageControl(admin.ModelAdmin):
-    list_display = ('AdminOnly', 'Form', 'UpdateAll',)
+    list_display = ('AdminOnly', 'SeriesTracker', 'Form', 'UpdateAll',)
     list_editable = ('Form', 'UpdateAll',)
 
 @admin.register(BlogPost)

@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#21314D">
 
-  {% load static %}
   <link rel="stylesheet" href="{% static 'css_bootstrap/bootstrap.css' %}">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Holtwood+One+SC" rel="stylesheet" type="text/css">
@@ -16,7 +15,6 @@
   <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Istok+Web|Roboto+Condensed:700" rel="stylesheet" type="text/css">
 
-  {% load static %}
   <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
 
   {% block title %}<title>CSM Stanley Cup Brackets 2023</title>{% endblock %}
@@ -34,7 +32,7 @@
   <hr style="border: none; height: 1px; background-color: #e1e1e1; padding: 0px; margin: 0px;">
   {% endblock %}
 
-  {% block footer %}
+  {% block navbar %}
   <section class="nav-bar">
     <a href="{% url 'index' %}">Home</a>
     <a href="{% url 'master' %}">Master</a>
@@ -48,7 +46,6 @@
 
   {% block content %}{% endblock %}
 
-  {% load static %}
   <script src="{% static 'script.js' %}"></script>
 
 </body>

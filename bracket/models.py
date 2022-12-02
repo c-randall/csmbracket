@@ -28,6 +28,7 @@ class Entry(models.Model):
     series15 = models.CharField(max_length=12)
 
     points = models.PositiveSmallIntegerField(default=0)
+    points_potential = models.PositiveSmallIntegerField(default=0)
     tpp = models.PositiveSmallIntegerField(default=380)
 
     class Meta:
@@ -39,8 +40,6 @@ class Entry(models.Model):
 
 class Series(models.Model):
     num = models.PositiveSmallIntegerField()
-
-    IsComplete = models.BooleanField(default=False)
 
     Away = models.CharField(max_length=12, blank=True)
     Home = models.CharField(max_length=12, blank=True)
@@ -69,6 +68,16 @@ class Series(models.Model):
     AwayWins = models.PositiveSmallIntegerField(default=0)
     HomeWins = models.PositiveSmallIntegerField(default=0)
 
+    DeterminesSeries = models.PositiveSmallIntegerField(null=True, blank=True)
+
+    isComplete = models.BooleanField(default=False)
+
+    Winner = models.CharField(max_length=12, blank=True)
+    Loser = models.CharField(max_length=12, blank=True)
+
+    XPos = models.PositiveSmallIntegerField(default=0)
+    YPos = models.PositiveSmallIntegerField(default=0)
+
     class Meta:
         ordering = ('num',)
         verbose_name = "Series"
@@ -76,33 +85,6 @@ class Series(models.Model):
 
     def __str__(self):
         return str(self.num)
-
-class MasterBracket(models.Model):
-    series1 = models.CharField(max_length=12, blank=True)
-    series2 = models.CharField(max_length=12, blank=True)
-    series3 = models.CharField(max_length=12, blank=True)
-    series4 = models.CharField(max_length=12, blank=True)
-    series5 = models.CharField(max_length=12, blank=True)
-    series6 = models.CharField(max_length=12, blank=True)
-    series7 = models.CharField(max_length=12, blank=True)
-    series8 = models.CharField(max_length=12, blank=True)
-    series9 = models.CharField(max_length=12, blank=True)
-    series10 = models.CharField(max_length=12, blank=True)
-    series11 = models.CharField(max_length=12, blank=True)
-    series12 = models.CharField(max_length=12, blank=True)
-    series13 = models.CharField(max_length=12, blank=True)
-    series14 = models.CharField(max_length=12, blank=True)
-    series15 = models.CharField(max_length=12, blank=True)
-
-    points = models.PositiveSmallIntegerField(default=0)
-    tpp = models.PositiveSmallIntegerField(default=380)
-
-    class Meta:
-        verbose_name = "Master"
-        verbose_name_plural = "Master"
-
-    def __str__(self):
-        return 'master'
 
 class StartingTeam(models.Model):
     Index = models.PositiveSmallIntegerField()
@@ -128,8 +110,9 @@ class StartingTeam(models.Model):
 class AdminControl(models.Model):
     AdminOnly = 'Admin Controls'
     Form = models.BooleanField(default=False)
-    ResetAll = models.BooleanField(default=False)
+    Initialize = models.BooleanField(default=False)
     UpdateAll = models.BooleanField(default=False)
+    SeriesTracker = models.PositiveSmallIntegerField(default=0)
 
     class Meta:
         verbose_name = 'Admin Control'

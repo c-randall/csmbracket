@@ -31,6 +31,10 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .split-one .round {margin: 0 2.5% 0 0;}
 .split-two .round {margin: 0 0 0 2.5%;}
 
+.expand {width: 100%; height: 80px; margin: 0; padding: 0; background: transparent; border: none; color: white; font-size: 14px;}
+.expand-btn {display: none;}
+.expand-out {display: show;}
+
 .round {float: left; display: flex; flex-direction: column; width: 95%;}
 .round-num {font-family: "Roboto Condensed", sans-serif; font-size: 16px; color: #2C7399; text-align: center; height: 40px; margin: 10px 0 0;}
 
@@ -46,10 +50,19 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .matchup {margin: 0; width: 100%; padding: 14px 0; height: 80px;}
 .team {padding: 0 5px; margin: 4px 0; height: 40px; line-height: 25px; white-space: nowrap; overflow: hidden; position: relative;}
 
-.team-button {width: 100%; text-align: left; font-size: 14px; height: 100%; margin: 0;}
+.team-button {width: 100%; text-align: left; font-size: 14px; height: 100%; display: inline-flex;}
 .team-button:hover:enabled {background: lightblue;}
 .team-button:active:enabled {background: lightgreen; color: white;}
 .team-button:disabled {color: black; background: lightgrey; opacity: 0.5;}
+.team-button img {height: 100%; margin: 0 10px 0 5px;}
+
+.team-button-right {width: 100%; font-size: 14px; height: 100%; display: inline-flex; justify-content: end;}
+.team-button-right:hover:enabled {background: lightblue;}
+.team-button-right:active:enabled {background: lightgreen; color: white;}
+.team-button-right:disabled {color: black; background: lightgrey; opacity: 0.5;}
+.team-button-right img {height: 100%; margin: 0 5px 0 10px;}
+
+.sub-team {margin: auto 0;}
 
 .winner {background: lightgreen;}
 /* .loser {background: red;} */
@@ -62,18 +75,19 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .submission .form-off:disabled {color: black; background: lightgrey; opacity: 0.5;}
 .submission input:disabled {color: black; background: lightgrey; opacity: 0.5;}
 
-.scores {margin: 0 auto; width: 100%; overflow-y: auto; max-height: calc(100vh - 60px);}
-.scores h1 {margin: 0 auto; padding: 20px 0 0 0; width: 90%; background: #e1e1e1; position: sticky; top: 0;}
-.scores hr {height: 1px; border: none; background: #454545;}
-.scores table {width: 80%; margin: 40px auto 0; border: 1;}
-.scores th {overflow: hidden; text-overflow: ellipsis; color: white; background: #454545; width: calc(45%/9); white-space: nowrap; max-width: 0;}
-.scores td {text-align: center; overflow: hidden; text-overflow: ellipsis; width: calc(45%/9); white-space: nowrap; max-width: 0;}
-.scores-rounds {margin: 0; padding: 0;}
-.scores-rounds .no-gap {margin: 0; padding-bottom: 40px;}
+.scores {margin: 0 auto; width: 100%;}
+.scores h1 {margin: 0 auto; padding: 20px 0 0 0; width: 100%; background: #e1e1e1; position: sticky; top: 61px;}
+.scores hr {height: 1px; border: none; background: #454545; margin-bottom: 30px;}
+.scores table {margin: 0 auto 0; border: 1;}
+.scores th {color: white; background: #454545; white-space: nowrap;}
+.scores td {text-align: center; white-space: nowrap; min-width: 50px;}
+.scores-rounds {margin: 0 auto; padding: 0; width: 90%;}
+.no-gap {margin: 0; padding: 0 0 30px; overflow-x: scroll;}
+.table-team {min-width: 120px;}
 
 .flexbox-master {display: flex;}
-.col-master {margin: 10px auto 0;}
-.col-image {align-self: flex-start; position: sticky; top: 150px; width: 100%; height: auto; margin: 0 auto; padding-bottom: 0:}
+.col-master {margin: 0 auto;}
+.col-image {align-self: flex-start; width: 100%; height: auto; margin: 0 auto; padding-bottom: 0; position: sticky; top: 125px;}
 .col-image img {width: 90%; margin: 10px 0 0;}
 .col-rounds {}
 
@@ -87,10 +101,10 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .sort-carrot {font-size: 10px; white-space: nowrap;}
 
 .flexbox-standings {width: 70%; display: flex; margin: 20px auto;}
-.col-table {width: 100%;}
+.col-table {width: 90%;}
 .col-table table {width: 100%;}
 .col-bracket img {width: 100%; height: auto; vertical-align: middle; margin: 0 auto;}
-.col-bracket {}
+.col-bracket {margin-left: 2.5%; margin-right: -2.5%; margin-top: -1.5%;}
 
 @media screen and (min-width: 981px) and (max-width: 1099px) {
   .container {margin: 0 1%;}
@@ -125,9 +139,14 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
   .col-table {margin: 0 auto;}
   .col-bracket {margin: 60px auto;}
   .final {padding: 20px 0;}
+  .table-team {min-width: 100px;}
+  .col-rounds {margin-bottom: 30px;}
+  .scores h1 {margin-top: 30px;}
+  .team-button img {margin: 0 20px 0 10px;}
+  .team-button-right img {margin: 0 10px 0 20px;}
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .split {width: 95%; margin: 25px 2.5%;}
   .round-num {font-size: 90%;}
   .header p.intro {font-size: 1.15em; margin-bottom: -26px;}
@@ -153,6 +172,13 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
   .col-table {margin: 0 auto;}
   .col-bracket {margin: 60px auto;}
   .final {padding: 20px 0;}
+  .expand-btn {display: table-cell;}
+  .expand-out {display: none;}
+  .table-team {width: 65%;}
+  .team-button img {height: 80%; margin: auto 5px auto 0;}
+  .team-button {font-size: 12px;}
+  .team-button-right img {height: 80%; margin: auto 0 auto 5px;}
+  .team-button-right {font-size: 12px;}
 }
 
 Resources

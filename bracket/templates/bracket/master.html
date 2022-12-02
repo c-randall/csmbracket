@@ -13,142 +13,146 @@
 
     <div class="col-master col-rounds scores">
       {% if round4 %}
+      <div class="scores-rounds">
       <h1>Stanley Cup Finals<hr></h1>
+
       {% for series in round4 %}
+      <div class="no-gap">
       <table border="1;">
-        <thead>
-          <tr>
-            <th>Team</th>
-            {% for i in 1|range_to:7 %}
-            <th>Game {{ i }}</th>
-            {% endfor %}
-            <th># Wins</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ series.Away }}</td>
-            {% for i in 1|range_to:7 %}
-            <td>{{ series|get_away_score:i }}</td>
-            {% endfor %}
-            <td>{{ series.AwayWins }}</td>
-          </tr>
-          <tr>
-            <td>{{ series.Home }}</td>
-            {% for i in 1|range_to:7 %}
-            <td>{{ series|get_home_score:i }}</td>
-            {% endfor %}
-            <td>{{ series.HomeWins }}</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th class="table-team">Team</th>
+          <th class="expand-btn" rowspan="3"><button class="expand" id="R4Ex{{ series.num }}" onclick="Expand(this)">>></button></th>
+          {% for i in 1|range_to:7 %}
+          <th id="R4Ex{{ series.num }}Hd{{ i }}" class="expand-out">GM{{ i }}</th>
+          {% endfor %}
+          <th>Wins</th>
+        </tr>
+        <tr>
+          <td style="color: {{ series|away_ft_color:0 }}; background: {{ series|away_bg_color:0 }};">{{ series.Away }}</td>
+          {% for i in 1|range_to:7 %}
+          <td id="R4Ex{{ series.num }}T1C{{ i }}" class="expand-out" style="color: {{ series|away_ft_color:i }}; background: {{ series|away_bg_color:i }};">{{ series|get_away_score:i }}</td>
+          {% endfor %}
+          <td style="color: {{ series|away_ft_color:8 }}; background: {{ series|away_bg_color:8 }};">{{ series.AwayWins }}</td>
+        </tr>
+        <tr>
+          <td style="color: {{ series|home_ft_color:0 }}; background: {{ series|home_bg_color:0 }};">{{ series.Home }}</td>
+          {% for i in 1|range_to:7 %}
+          <td id="R4Ex{{ series.num }}T2C{{ i }}" class="expand-out" style="color: {{ series|home_ft_color:i }}; background: {{ series|home_bg_color:i }};">{{ series|get_home_score:i }}</td>
+          {% endfor %}
+          <td style="color: {{ series|home_ft_color:8 }}; background: {{ series|home_bg_color:8 }};">{{ series.HomeWins }}</td>
+        </tr>
       </table>
+      </div>
       {% endfor %}
+
+      </div>
       {% endif %}
 
       {% if round3 %}
+      <div class="scores-rounds">
       <h1>Conference Finals<hr></h1>
+
       {% for series in round3 %}
+      <div class="no-gap">
       <table border="1;">
-        <thead>
-          <tr>
-            <th>Team</th>
-            {% for i in 1|range_to:7 %}
-            <th>Game {{ i }}</th>
-            {% endfor %}
-            <th># Wins</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ series.Away }}</td>
-            {% for i in 1|range_to:7 %}
-            <td>{{ series|get_away_score:i }}</td>
-            {% endfor %}
-            <td>{{ series.AwayWins }}</td>
-          </tr>
-          <tr>
-            <td>{{ series.Home }}</td>
-            {% for i in 1|range_to:7 %}
-            <td>{{ series|get_home_score:i }}</td>
-            {% endfor %}
-            <td>{{ series.HomeWins }}</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th class="table-team">Team</th>
+          <th class="expand-btn" rowspan="3"><button class="expand" id="R3Ex{{ series.num }}" onclick="Expand(this)">>></button></th>
+          {% for i in 1|range_to:7 %}
+          <th id="R3Ex{{ series.num }}Hd{{ i }}" class="expand-out">GM{{ i }}</th>
+          {% endfor %}
+          <th>Wins</th>
+        </tr>
+        <tr>
+          <td style="color: {{ series|away_ft_color:0 }}; background: {{ series|away_bg_color:0 }};">{{ series.Away }}</td>
+          {% for i in 1|range_to:7 %}
+          <td id="R3Ex{{ series.num }}T1C{{ i }}" class="expand-out" style="color: {{ series|away_ft_color:i }}; background: {{ series|away_bg_color:i }};">{{ series|get_away_score:i }}</td>
+          {% endfor %}
+          <td style="color: {{ series|away_ft_color:8 }}; background: {{ series|away_bg_color:8 }};">{{ series.AwayWins }}</td>
+        </tr>
+        <tr>
+          <td style="color: {{ series|home_ft_color:0 }}; background: {{ series|home_bg_color:0 }};">{{ series.Home }}</td>
+          {% for i in 1|range_to:7 %}
+          <td id="R3Ex{{ series.num }}T2C{{ i }}" class="expand-out" style="color: {{ series|home_ft_color:i }}; background: {{ series|home_bg_color:i }};">{{ series|get_home_score:i }}</td>
+          {% endfor %}
+          <td style="color: {{ series|home_ft_color:8 }}; background: {{ series|home_bg_color:8 }};">{{ series.HomeWins }}</td>
+        </tr>
       </table>
+      </div>
       {% endfor %}
+
+      </div>
       {% endif %}
 
-      {% if round1 %}
+      {% if round2 %}
       <div class="scores-rounds">
       <h1>Round 2<hr></h1>
+
+      {% for series in round2 %}
       <div class="no-gap">
-      {% for series in round1 %}
       <table border="1;">
-        <thead>
-          <tr>
-            <th>Team</th>
-            {% for i in 1|range_to:7 %}
-            <th>Game {{ i }}</th>
-            {% endfor %}
-            <th># Wins</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ series.Away }}</td>
-            {% for i in 1|range_to:7 %}
-            <td>{{ series|get_away_score:i }}</td>
-            {% endfor %}
-            <td>{{ series.AwayWins }}</td>
-          </tr>
-          <tr>
-            <td>{{ series.Home }}</td>
-            {% for i in 1|range_to:7 %}
-            <td>{{ series|get_home_score:i }}</td>
-            {% endfor %}
-            <td>{{ series.HomeWins }}</td>
-          </tr>
-        </tbody>
+        <tr>
+          <th class="table-team">Team</th>
+          <th class="expand-btn" rowspan="3"><button class="expand" id="R2Ex{{ series.num }}" onclick="Expand(this)">>></button></th>
+          {% for i in 1|range_to:7 %}
+          <th id="R2Ex{{ series.num }}Hd{{ i }}" class="expand-out">GM{{ i }}</th>
+          {% endfor %}
+          <th>Wins</th>
+        </tr>
+        <tr>
+          <td style="color: {{ series|away_ft_color:0 }}; background: {{ series|away_bg_color:0 }};">{{ series.Away }}</td>
+          {% for i in 1|range_to:7 %}
+          <td id="R2Ex{{ series.num }}T1C{{ i }}" class="expand-out" style="color: {{ series|away_ft_color:i }}; background: {{ series|away_bg_color:i }};">{{ series|get_away_score:i }}</td>
+          {% endfor %}
+          <td style="color: {{ series|away_ft_color:8 }}; background: {{ series|away_bg_color:8 }};">{{ series.AwayWins }}</td>
+        </tr>
+        <tr>
+          <td style="color: {{ series|home_ft_color:0 }}; background: {{ series|home_bg_color:0 }};">{{ series.Home }}</td>
+          {% for i in 1|range_to:7 %}
+          <td id="R2Ex{{ series.num }}T2C{{ i }}" class="expand-out" style="color: {{ series|home_ft_color:i }}; background: {{ series|home_bg_color:i }};">{{ series|get_home_score:i }}</td>
+          {% endfor %}
+          <td style="color: {{ series|home_ft_color:8 }}; background: {{ series|home_bg_color:8 }};">{{ series.HomeWins }}</td>
+        </tr>
       </table>
-      {% endfor %}
       </div>
+      {% endfor %}
+
       </div>
       {% endif %}
 
       {% if round1 %}
       <div class="scores-rounds">
         <h1>Round 1<hr></h1>
-        <div class="no-gap">
+
         {% for series in round1 %}
+        <div class="no-gap">
         <table border="1;">
-          <thead>
-            <tr>
-              <th>Team</th>
-              {% for i in 1|range_to:7 %}
-              <th>Game {{ i }}</th>
-              {% endfor %}
-              <th># Wins</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{{ series.Away }}</td>
-              {% for i in 1|range_to:7 %}
-              <td>{{ series|get_away_score:i }}</td>
-              {% endfor %}
-              <td>{{ series.AwayWins }}</td>
-            </tr>
-            <tr>
-              <td>{{ series.Home }}</td>
-              {% for i in 1|range_to:7 %}
-              <td>{{ series|get_home_score:i }}</td>
-              {% endfor %}
-              <td>{{ series.HomeWins }}</td>
-            </tr>
-          </tbody>
+          <tr>
+            <th class="table-team">Team</th>
+            <th class="expand-btn" rowspan="3"><button class="expand" id="R1Ex{{ series.num }}" onclick="Expand(this)">>></button></th>
+            {% for i in 1|range_to:7 %}
+            <th id="R1Ex{{ series.num }}Hd{{ i }}" class="expand-out">GM{{ i }}</th>
+            {% endfor %}
+            <th>Wins</th>
+          </tr>
+          <tr>
+            <td style="color: {{ series|away_ft_color:0 }}; background: {{ series|away_bg_color:0 }};">{{ series.Away }}</td>
+            {% for i in 1|range_to:7 %}
+            <td id="R1Ex{{ series.num }}T1C{{ i }}" class="expand-out" style="color: {{ series|away_ft_color:i }}; background: {{ series|away_bg_color:i }};">{{ series|get_away_score:i }}</td>
+            {% endfor %}
+            <td style="color: {{ series|away_ft_color:8 }}; background: {{ series|away_bg_color:8 }};">{{ series.AwayWins }}</td>
+          </tr>
+          <tr>
+            <td style="color: {{ series|home_ft_color:0 }}; background: {{ series|home_bg_color:0 }};">{{ series.Home }}</td>
+            {% for i in 1|range_to:7 %}
+            <td id="R1Ex{{ series.num }}T2C{{ i }}" class="expand-out" style="color: {{ series|home_ft_color:i }}; background: {{ series|home_bg_color:i }};">{{ series|get_home_score:i }}</td>
+            {% endfor %}
+            <td style="color: {{ series|home_ft_color:8 }}; background: {{ series|home_bg_color:8 }};">{{ series.HomeWins }}</td>
+          </tr>
         </table>
+        </div>
         {% endfor %}
-      </div>
+
       </div>
       {% endif %}
     </div>

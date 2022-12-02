@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
-from .models import Entry, Series, MasterBracket, StartingTeam, AdminControl, BlogPost
+from .models import Entry, Series, StartingTeam, AdminControl, BlogPost
 from .forms import EntryForm
 from .utils import *
 from PIL import Image
@@ -29,17 +29,17 @@ def masterpage(request):
         round1 = False
 
     if any(series >= 9 for series in series_list):
-        round2 = seriesquery.filter(num_gte=9, num__lte=12)
+        round2 = seriesquery.filter(num__gte=9, num__lte=12)
     else:
         round2 = False
 
     if any(series >= 12 for series in series_list):
-        round3 = seriesquery.filter(num_gte=13, num_lte=14)
+        round3 = seriesquery.filter(num__gte=13, num__lte=14)
     else:
         round3 = False
 
     if any(series >= 15 for series in series_list):
-        round4 = seriesquery.filter(num_gte=15)
+        round4 = seriesquery.filter(num__gte=15)
     else:
         round4 = False
 
@@ -48,13 +48,19 @@ def masterpage(request):
 
 def standingspage(request, show_img, sort):
 
+    scores = np.array([10, 10, 10, 10, 10, 10, 10, 10, 25, 25, 25, 25, 50, 50, 100])
+
     entryquery = Entry.objects.all()
     entriesfiltered = entryquery.filter(participating=True)
 
-    masterbracket = MasterBracket.objects.all()[0]
+    seriescomplete = Series.objects.all().order_by('num').filter(isComplete=True)
+
+    masterpoints = 0
+    for series in seriescomplete:
+        masterpoints += scores[int(series.num)-1]
 
     data = pd.DataFrame(columns=['Name', 'Points', 'TPP', 'img_name'])
-    data.loc[len(data.index)] = ['Master', masterbracket.points, masterbracket.tpp, 'MasterBracket']
+    data.loc[len(data.index)] = ['Master', masterpoints, 380, 'MasterBracket']
 
     for entry in entriesfiltered:
         space = entry.name.find(' ')
@@ -95,6 +101,8 @@ def submissionpage(request):
             for k in fields:
                 if filledform.cleaned_data.get(k) is not None:
                     formhold[k] = filledform.cleaned_data.get(k)
+
+        print('\nformhold: ',formhold)
 
         teamclasses = {}
         for i in range(30):
@@ -146,6 +154,7 @@ def submissionpage(request):
             formhold, teamclasses = storeform(filledform)
             messages.error(request, 'Invalid form: missing inputs.')
 
+    print('\n',formhold,teamclasses,'\n')
     form = EntryForm(request.POST or None)
     context = {'startingteams': startingteams, 'form': form, 'formhold': formhold,
                'teamclasses': teamclasses, 'active': form_toggle}
