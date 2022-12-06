@@ -37,7 +37,7 @@
         {% if post.embedlink %}
         <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         {% elif post.image %}
-        <img src="{% static post.image.url|cut:'bracket/static/' %}" alt="">
+        <img src="{% static post.image.url %}" alt="">
         {% endif %}
       </div>
 

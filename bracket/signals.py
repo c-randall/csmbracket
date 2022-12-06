@@ -1,7 +1,7 @@
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import pre_save, post_save, pre_delete
 from django.dispatch import receiver
 
-from .models import AdminControl, StartingTeam, Series, Entry
+from .models import AdminControl, StartingTeam, Series, Entry, BlogPost
 from .utils import *
 
 import os
@@ -115,12 +115,8 @@ def admin_flags(sender, instance, **kwargs):
             raise Exception('Team count is not 16!')
 
     if instance.Initialize:
-
         startingquery = StartingTeam.objects.all().order_by('Index')
         startingteams = [Team.Name for Team in startingquery]
-
-        basebracket = 'bracket/static/images/Brackets/BaseBracket.png'
-        masterbracket = 'bracket/static/images/Brackets/MasterBracket.png'
 
         base_bracket(startingteams)
 
@@ -180,3 +176,29 @@ def admin_flags(sender, instance, **kwargs):
         instance.UpdateAll = False
         update_all_func(True, True)
         instance.SeriesTracker = Series.objects.all().filter(isComplete=True).count()
+
+@receiver(pre_delete, sender=Entry)
+def delete_bracket_files(sender, instance, **kwargs):
+    name = instance.name.replace(' ', '_')
+
+    try: os.remove('bracket/static/images/Brackets/'+name+'_Base.png')
+    except: pass
+
+    try: os.remove('bracket/static/images/Brackets/'+name+'.png')
+    except: pass
+
+@receiver(pre_delete, sender=BlogPost)
+def delete_media_files(sender, instance, **kwargs):
+    try: os.remove('bracket/static/'+instance.image.url)
+    except: pass
+
+@receiver(post_save, sender=Entry)
+def initialize_participant(sender, instance, **kwargs):
+
+    if instance.participating:
+        name = instance.name.replace(' ', '_')
+        bracket0_path = 'bracket/static/images/Brackets/'+name+'_Base.png'
+        bracket1_path = 'bracket/static/images/Brackets/'+name+'.png'
+
+        if not os.path.exists(bracket0_path) or not os.path.exists(bracket1_path):
+            late_entry(instance)

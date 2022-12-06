@@ -20,7 +20,7 @@ def index(request):
 
 def masterpage(request):
 
-    seriesquery = Series.objects.all().order_by('num')
+    seriesquery = Series.objects.all().order_by('num').exclude(Home="",Away="")
     series_list = [series.num for series in seriesquery]
 
     if any(series >= 1 for series in series_list):
@@ -94,15 +94,13 @@ def submissionpage(request):
 
         formhold = {}
         for k in fields:
-            if k == 'name': formhold[k] = 'Type first and last name...'
+            if k == 'name': formhold[k] = 'First and last name...'
             else: formhold[k] = ""
 
         if filledform:
             for k in fields:
                 if filledform.cleaned_data.get(k) is not None:
                     formhold[k] = filledform.cleaned_data.get(k)
-
-        print('\nformhold: ',formhold)
 
         teamclasses = {}
         for i in range(30):
@@ -137,7 +135,7 @@ def submissionpage(request):
         if filledform.is_valid():
             submission = filledform.save(commit=False)
 
-            if submission.name == 'Type first and last name...':
+            if submission.name == 'First and last name...':
                 formhold, teamclasses = storeform(filledform)
                 messages.error(request, 'Invalid form: missing name.')
 
@@ -154,7 +152,6 @@ def submissionpage(request):
             formhold, teamclasses = storeform(filledform)
             messages.error(request, 'Invalid form: missing inputs.')
 
-    print('\n',formhold,teamclasses,'\n')
     form = EntryForm(request.POST or None)
     context = {'startingteams': startingteams, 'form': form, 'formhold': formhold,
                'teamclasses': teamclasses, 'active': form_toggle}

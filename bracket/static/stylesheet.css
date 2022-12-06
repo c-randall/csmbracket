@@ -28,8 +28,8 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .bracket {display: block; overflow: hidden; font-size: 14px; padding: 40px 0;}
 .container {max-width: 1200px; margin: 0 auto; display: flex; flex-direction: row;}
 .split {float: left; display: flex; flex-direction: row; width: 42%;}
-.split-one .round {margin: 0 2.5% 0 0;}
-.split-two .round {margin: 0 0 0 2.5%;}
+.split-one .round {margin: 0;}
+.split-two .round {margin: 0;}
 
 .expand {width: 100%; height: 80px; margin: 0; padding: 0; background: transparent; border: none; color: white; font-size: 14px;}
 .expand-btn {display: none;}
@@ -41,9 +41,9 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .round-one {}
 .round-two .matchup {padding: 69px 0;}
 .round-three .matchup {padding: 176px 0;}
-.round-four .matchup {padding: 31px 0;}
+.round-four .matchup {padding: 10px 0;}
 
-.final {padding: 80px 0 0;}
+.final {padding: 87px 0 0;}
 .championship {float: left; width: 16%; width: 16%; flex-direction: row; align-self: center; text-align: center;}
 .championship i {color: #a0a6a8; font-size: 45px; padding: 10px 0;}
 
@@ -69,11 +69,12 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 
 .submission {text-align: center; position: relative; top: 10px;}
 .submission input {border-radius: 10px; font-size: 14px; height: 40px; width: 95%; margin: 60px 0 0;}
-.submission button {border-radius: 10px; font-size: 14px; height: 40px; width: 45%; margin: 10px 0 0;}
-.submission button:hover:enabled {background: blue; color: white;}
-.submission button:active {background: green; color: white;}
+.submission button {border-radius: 10px; font-size: 14px; height: 40px; width: 45%; margin: 10px 0 0; background: #A8A8A8;}
+.submission button:hover {background: blue; color: white;}
 .submission .form-off:disabled {color: black; background: lightgrey; opacity: 0.5;}
 .submission input:disabled {color: black; background: lightgrey; opacity: 0.5;}
+.submission .submit-button:active {background: green; color: white;}
+.submission .reset-button:active {background: red; color: white;}
 
 .scores {margin: 0 auto; width: 100%;}
 .scores h1 {margin: 0 auto; padding: 20px 0 0 0; width: 100%; background: #e1e1e1; position: sticky; top: 61px;}
@@ -83,13 +84,15 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .scores td {text-align: center; white-space: nowrap; min-width: 50px;}
 .scores-rounds {margin: 0 auto; padding: 0; width: 90%;}
 .no-gap {margin: 0; padding: 0 0 30px; overflow-x: scroll;}
+.no-gap::-webkit-scrollbar {background: #e1e1e1;}
+.no-gap::-webkit-scrollbar-thumb {background-color: #454545; border: 5px solid transparent; background-clip: content-box;}
 .table-team {min-width: 120px;}
 
 .flexbox-master {display: flex;}
 .col-master {margin: 0 auto;}
-.col-image {align-self: flex-start; width: 100%; height: auto; margin: 0 auto; padding-bottom: 0; position: sticky; top: 125px;}
+.col-image {align-self: flex-start; width: 100%; height: auto; margin: 0 auto; padding-bottom: 0; position: sticky; top: 15%; min-width: 600px;}
 .col-image img {width: 90%; margin: 10px 0 0;}
-.col-rounds {}
+.col-rounds {min-width: 0;}
 
 .standingstable {font-size: 14px; font-family: "Istok Web", sans-serif;}
 .standingstable th {background: #21314D; padding: 5px; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 80px;}
@@ -100,21 +103,27 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .sort-button:hover {cursor: pointer;}
 .sort-carrot {font-size: 10px; white-space: nowrap;}
 
-.flexbox-standings {width: 70%; display: flex; margin: 20px auto;}
+.flexbox-standings {width: 70%; display: flex; margin: 20px auto; min-width: 800px;}
 .col-table {width: 90%;}
 .col-table table {width: 100%;}
 .col-bracket img {width: 100%; height: auto; vertical-align: middle; margin: 0 auto;}
-.col-bracket {margin-left: 2.5%; margin-right: -2.5%; margin-top: -1.5%;}
+.col-bracket {margin-left: 2.5%; margin-right: -2.5%; margin-top: -1.5%; min-width: 500px;}
 
 @media screen and (min-width: 981px) and (max-width: 1099px) {
   .container {margin: 0 1%;}
   .championship {width: 14%;}
   .split {width: 43%;}
   .header p.intro {font-size: 2em;}
-  .col-image {top: 25%;}
+  .team-button {font-size: 12px;}
+  .team-button img {height: 90%; margin: 0 6px 0 0;}
+  .team-button-right {font-size: 12px;}
+  .team-button-right img {height: 90%; margin: 0 0 0 6px;}
+  .submission input {font-size: 12px;}
+  .submission button {font-size: 12px;}
 }
 
 @media screen and (max-width: 980px) {
+  .bracket {padding: 25px 0;}
   .container {flex-direction: column;}
   .split, .championship {width: 90%; margin: 35px 5%;}
   .championship {order: 3;}
@@ -128,26 +137,27 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
   .blogs .blog-media img {width: calc(560px/1.75); height: calc(315px/1.75);}
   .blogs .blog-body .blog-media {margin: 10px auto;}
   .blogs .blog-body .blog-txt {width: 90%; margin: 0 auto; padding: 0;}
-  .flexbox-standings {flex-wrap: wrap; width: 80%;}
+  .flexbox-standings {flex-wrap: wrap; width: 80%; min-width: 0;}
   .col-bracket img {width: 120%; margin-left: -10%; margin-right: -10%;}
   .flexbox-master {flex-wrap: wrap;}
-  .col-image {margin-top: 20px; position: relative; top: 0;}
+  .col-image {margin-top: 20px; position: relative; top: 0; min-width: 0;}
   .body-txt {width: 80%;}
   body .blogs {width: 80%;}
   .standings p {width: 80%;}
   .scores {max-height: none;}
   .col-table {margin: 0 auto;}
-  .col-bracket {margin: 60px auto;}
+  .col-bracket {margin: 60px auto; min-width: 0;}
   .final {padding: 20px 0;}
   .table-team {min-width: 100px;}
   .col-rounds {margin-bottom: 30px;}
   .scores h1 {margin-top: 30px;}
-  .team-button img {margin: 0 20px 0 10px;}
-  .team-button-right img {margin: 0 10px 0 20px;}
+  .team-button img {margin: 0 10px 0 0px;}
+  .team-button-right img {margin: 0 0px 0 10px;}
 }
 
 @media screen and (max-width: 450px) {
-  .split {width: 95%; margin: 25px 2.5%;}
+  .bracket {padding: 25px 0;}
+  .split {width: 98%; margin: 25px 1%;}
   .round-num {font-size: 90%;}
   .header p.intro {font-size: 1.15em; margin-bottom: -26px;}
   .header h1 {font-size: 2.15em; letter-spacing: 0; margin-bottom: 8px;}
@@ -161,23 +171,24 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
   .blogs .blog-media img {width: calc(560px/2); height: calc(315px/2);}
   .blogs .blog-body .blog-media {margin: 10px auto;}
   .blogs .blog-body .blog-txt {width: 90%; margin: 0 auto; padding: 0;}
-  .flexbox-standings {flex-wrap: wrap; width: 80%;}
+  .flexbox-standings {flex-wrap: wrap; width: 80%; min-width: 0;}
+  .col-bracket {min-width: 0;}
   .col-bracket img {width: 120%; margin-left: -10%; margin-right: -10%;}
   .flexbox-master {flex-wrap: wrap;}
-  .col-image {margin-top: 20px; position: relative; top: 0;}
+  .col-image {margin-top: 20px; position: relative; top: 0; min-width: 0;}
   .body-txt {width: 80%;}
   body .blogs {width: 80%;}
   .standings p {width: 80%;}
   .scores {max-height: none;}
-  .col-table {margin: 0 auto;}
+  .col-table {width: 100%; margin: 0; padding: 0;}
   .col-bracket {margin: 60px auto;}
   .final {padding: 20px 0;}
   .expand-btn {display: table-cell;}
   .expand-out {display: none;}
   .table-team {width: 65%;}
-  .team-button img {height: 80%; margin: auto 5px auto 0;}
+  .team-button img {height: 80%; margin: auto 5px auto -5px;}
   .team-button {font-size: 12px;}
-  .team-button-right img {height: 80%; margin: auto 0 auto 5px;}
+  .team-button-right img {height: 80%; margin: auto -5px auto 5px;}
   .team-button-right {font-size: 12px;}
 }
 

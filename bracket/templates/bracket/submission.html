@@ -81,15 +81,15 @@
               {% if key == 'name' %}
                 <input type="text" name="{{ key }}" id="{{ key }}" value="{{ val }}" onfocus="ClearField(this)"><br/>
               {% else %}
-                <input type="text" name="{{ key }}" id="{{ key }}" value="{{ val }}">
+                <input type="hidden" name="{{ key }}" id="{{ key }}" value="{{ val }}">
               {% endif %}
             {% endfor %}
-            <button type="button" id="reset" onclick="ResetBracket()">Reset</button>
-            <button type="submit" id="submit">Submit</button>
+            <button type="button" id="reset" onclick="ResetBracket()" class="reset-button">Reset</button>
+            <button type="submit" id="submit" class="submit-button">Submit</button>
           </form>
         {% else %}
           <div class="submission">
-            <input class="form-off" type="text" id="name" value="Type first and last name..." disabled><br/>
+            <input class="form-off" type="text" id="name" value="First and last name..." disabled><br/>
             <button class="form-off" id="reset" disabled>Reset</button>
             <button class="form-off" id="submit" disabled>Submit</button>
           </div>

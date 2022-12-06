@@ -95,9 +95,7 @@ function Loser(id, value) {
 function ClearRound2Wins(clearteam) {
   for (let i=0; i<R2HIClear.length; i++) {
     if (R2HIClear[i].value == clearteam) {
-      if (Round2Teams[i].classList.contains("winner")) {
-        R2HIClear[i].value = "";
-      }
+      R2HIClear[i].value = "";
       Round2Teams[i].innerHTML = "";
       Round2Teams[i].classList.remove("loser","winner");}
   }
@@ -106,9 +104,7 @@ function ClearRound2Wins(clearteam) {
 function ClearRound3Wins(clearteam) {
   for (let i=0; i<R3HIClear.length; i++) {
     if (R3HIClear[i].value == clearteam) {
-      if (Round3Teams[i].classList.contains("winner")) {
-        R3HIClear[i].value = "";
-      }
+      R3HIClear[i].value = "";
       Round3Teams[i].innerHTML = "";
       Round3Teams[i].classList.remove("loser","winner");}
   }
@@ -117,9 +113,7 @@ function ClearRound3Wins(clearteam) {
 function ClearRound4Wins(clearteam) {
   for (let i=0; i<R4HIClear.length; i++) {
     if (R4HIClear[i].value == clearteam) {
-      if (Round4Teams[i].classList.contains("winner")) {
-        R4HIClear[i].value = "";
-      }
+      R4HIClear[i].value = "";
       Round4Teams[i].innerHTML = "";
       Round4Teams[i].classList.remove("loser","winner");}
   }
@@ -129,7 +123,7 @@ function ClearRound4Wins(clearteam) {
 }
 
 function ClearField(name) {
-  if (name.value == "Type first and last name...") {
+  if (name.value == "First and last name...") {
     name.value = "";}
 }
 
