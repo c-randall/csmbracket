@@ -90,7 +90,7 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 
 .flexbox-master {display: flex;}
 .col-master {margin: 0 auto;}
-.col-image {align-self: flex-start; width: 100%; height: auto; margin: 0 auto; padding-bottom: 0; position: sticky; top: 15%; min-width: 600px;}
+.col-image {align-self: flex-start; width: 100%; height: auto; margin: 0 auto; padding-bottom: 0; position: sticky; top: max(70px, calc(0.5*(100vh - 661px))); min-width: 600px;}
 .col-image img {width: 90%; margin: 10px 0 0;}
 .col-rounds {min-width: 0;}
 
