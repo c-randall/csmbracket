@@ -186,7 +186,7 @@ def update_entry_bracket(entry, choice_matrix):
 
     for i,series in enumerate(seriesquery):
         if choice_matrix[i] == 1:
-            bracket.paste(greenCir, (series.XPos,series.YPos), greenCir)
+            bracket.paste(greenCir, (series.XPos-12,series.YPos-12), greenCir)
 
         elif choice_matrix[i] == 0:
             bracket.paste(redX, (series.XPos,series.YPos), redX)
