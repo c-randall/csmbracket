@@ -228,11 +228,17 @@ def first_bracket(name, teams):
 
     bracket = Image.open('bracket/static/images/Brackets/BaseBracket.png')
 
+    bkgd = Image.new('RGBA', (100,100), (0,0,0,0))
+    mask = Image.new('RGBA', (100,100), 0)
+    draw = ImageDraw.Draw(mask)
+    draw.ellipse((0,0,100,100), fill='green')
+
     space_ind = name.index('_')
     draw_name(bracket, name.replace('_', ' ')[:space_ind+2]+'.')
 
     for i,n in enumerate(teams):
-        overlay = Image.open('bracket/static/images/PNG_Files/'+n+'Circle.png')
+        logo = Image.open('bracket/static/images/PNG_Files/'+n+'Circle.png')
+        overlay = Image.composite(logo, bkgd, mask)
         bracket.paste(overlay, (int(xvec[i]), int(yvec[i])))
 
     bracket.save('bracket/static/images/Brackets/'+name+'_Base.png', 'PNG')
