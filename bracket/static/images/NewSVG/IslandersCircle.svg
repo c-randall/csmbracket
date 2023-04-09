@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="200"
    height="200"
    viewBox="0 0 52.916665 52.916668"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="IslandersCircle.svg">
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="IslandersCircle.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -24,18 +24,21 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="52.216013"
-     inkscape:cy="69.643295"
+     inkscape:cx="10.178571"
+     inkscape:cy="69.642857"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      units="px"
-     inkscape:window-width="1600"
-     inkscape:window-height="1137"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      inkscape:window-x="1912"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="true"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -44,7 +47,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -53,11 +55,12 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       inkscape:export-ydpi="192"
-       inkscape:export-xdpi="192"
-       transform="matrix(0.17638889,0,0,0.18284262,-22.930556,-10.1101)"
+       inkscape:export-ydpi="96.000008"
+       inkscape:export-xdpi="96.000008"
+       transform="matrix(0.08819444,0,0,0.09142131,-11.465278,-5.0550501)"
        id="g882"
-       style="clip-rule:evenodd;fill-rule:evenodd">
+       style="clip-rule:evenodd;fill-rule:evenodd"
+       inkscape:export-filename="IslandersCircle.png">
       <path
          d="m 280,55.294 c -82.836,0 -150,64.804 -150,144.736 0,79.871 67.164,144.675 150,144.675 82.836,0 150,-64.804 150,-144.675 C 430,120.099 362.836,55.294 280,55.294 Z"
          fill="#ffffff"
