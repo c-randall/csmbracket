@@ -119,6 +119,7 @@ def admin_flags(sender, instance, **kwargs):
         startingteams = [Team.Name for Team in startingquery]
 
         base_bracket(startingteams)
+        update_master_bracket()
 
         xvec = np.array([200, 200, 200, 200, 1100, 1100, 1100, 1100, 350, 350, 950,
                          950, 500, 800, 650])

@@ -33,6 +33,7 @@
         </div>
         {% endif %}
 
+      {% if post.embedlink or post.image %}
       <div class="blog-media">
         {% if post.embedlink %}
         <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -40,6 +41,7 @@
         <img src="{% static post.image.url %}" alt="">
         {% endif %}
       </div>
+      {% endif %}
 
     </div>
   </div>
@@ -49,21 +51,31 @@
       <h2 style="float: left;">{{ post.title }}</h2>
       <h2 style="float: right;">{{ post.date }}</h2>
     </div>
+    
     <div class="blog-body">
-      <div class="blog-media">
-        {% if post.embedlink %}
-        <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        {% elif post.image %}
-        <img src="{% static post.image.url|cut:'bracket/static/' %}" alt="">
-        {% endif %}
-      </div>
-      <div class="blog-txt">
+
         {% if post.embedlink or post.image %}
-        <p>{{ post.message }}</p>
-        {% else %}
-        <p class="blog-text-only">{{ post.message }}</p>
+        <div class="blog-media">
+          {% if post.embedlink %}
+          <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          {% elif post.image %}
+          <img src="{% static post.image.url %}" alt="">
+          {% endif %}
+        </div>
         {% endif %}
-      </div>
+
+        {% if post.embedlink or post.image %}
+        <div class="blog-txt">
+        {{ post.message|safe }}
+        </div>
+        {% else %}
+        <div class="blog-txt-only">
+          {{ post.message|safe }}
+        </div>
+        {% endif %}
+
+    </div>
+
     </div>
   </div>
   {% endif %}

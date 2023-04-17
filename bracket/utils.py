@@ -172,7 +172,7 @@ def update_master_bracket():
 
             masterbracket.paste(GreyOut, (ULC_XPos,ULC_YPos))
 
-        masterbracket.save('bracket/static/images/Brackets/MasterBracket.png')
+    masterbracket.save('bracket/static/images/Brackets/MasterBracket.png')
 
 def update_entry_bracket(entry, choice_matrix):
 
