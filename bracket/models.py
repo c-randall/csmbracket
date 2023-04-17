@@ -11,21 +11,21 @@ class Entry(models.Model):
     participating = models.BooleanField(default=False)
     date = models.DateTimeField(null=True, blank=True)
 
-    series1 = models.CharField(max_length=12)
-    series2 = models.CharField(max_length=12)
-    series3 = models.CharField(max_length=12)
-    series4 = models.CharField(max_length=12)
-    series5 = models.CharField(max_length=12)
-    series6 = models.CharField(max_length=12)
-    series7 = models.CharField(max_length=12)
-    series8 = models.CharField(max_length=12)
-    series9 = models.CharField(max_length=12)
-    series10 = models.CharField(max_length=12)
-    series11 = models.CharField(max_length=12)
-    series12 = models.CharField(max_length=12)
-    series13 = models.CharField(max_length=12)
-    series14 = models.CharField(max_length=12)
-    series15 = models.CharField(max_length=12)
+    series1 = models.CharField(max_length=20)
+    series2 = models.CharField(max_length=20)
+    series3 = models.CharField(max_length=20)
+    series4 = models.CharField(max_length=20)
+    series5 = models.CharField(max_length=20)
+    series6 = models.CharField(max_length=20)
+    series7 = models.CharField(max_length=20)
+    series8 = models.CharField(max_length=20)
+    series9 = models.CharField(max_length=20)
+    series10 = models.CharField(max_length=20)
+    series11 = models.CharField(max_length=20)
+    series12 = models.CharField(max_length=20)
+    series13 = models.CharField(max_length=20)
+    series14 = models.CharField(max_length=20)
+    series15 = models.CharField(max_length=20)
 
     points = models.PositiveSmallIntegerField(default=0)
     points_potential = models.PositiveSmallIntegerField(default=0)
@@ -41,8 +41,8 @@ class Entry(models.Model):
 class Series(models.Model):
     num = models.PositiveSmallIntegerField()
 
-    Away = models.CharField(max_length=12, blank=True)
-    Home = models.CharField(max_length=12, blank=True)
+    Away = models.CharField(max_length=20, blank=True)
+    Home = models.CharField(max_length=20, blank=True)
 
     AwayG1 = models.PositiveSmallIntegerField(null=True, blank=True)
     HomeG1 = models.PositiveSmallIntegerField(null=True, blank=True)
@@ -72,8 +72,8 @@ class Series(models.Model):
 
     isComplete = models.BooleanField(default=False)
 
-    Winner = models.CharField(max_length=12, blank=True)
-    Loser = models.CharField(max_length=12, blank=True)
+    Winner = models.CharField(max_length=20, blank=True)
+    Loser = models.CharField(max_length=20, blank=True)
 
     XPos = models.PositiveSmallIntegerField(default=0)
     YPos = models.PositiveSmallIntegerField(default=0)
@@ -88,7 +88,7 @@ class Series(models.Model):
 
 class StartingTeam(models.Model):
     Index = models.PositiveSmallIntegerField()
-    Name = models.CharField(max_length=12)
+    Name = models.CharField(max_length=20)
 
     IsEliminated = models.BooleanField(default=False)
 
