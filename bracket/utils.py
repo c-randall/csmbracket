@@ -242,3 +242,4 @@ def first_bracket(name, teams):
         bracket.paste(overlay, (int(xvec[i]), int(yvec[i])))
 
     bracket.save('bracket/static/images/Brackets/'+name+'_Base.png', 'PNG')
+    bracket.save('bracket/static/images/Brackets/'+name+'.png')
