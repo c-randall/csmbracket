@@ -33,15 +33,15 @@
         </div>
         {% endif %}
 
-      {% if post.embedlink or post.image %}
-      <div class="blog-media">
-        {% if post.embedlink %}
-        <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        {% elif post.image %}
-        <img src="{% static post.image.url %}" alt="">
+        {% if post.embedlink or post.image %}
+        <div class="blog-media">
+          {% if post.embedlink %}
+          <iframe src="{{ post.embedlink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          {% elif post.image %}
+          <img src="{% static post.image.url %}" alt="">
+          {% endif %}
+        </div>
         {% endif %}
-      </div>
-      {% endif %}
 
     </div>
   </div>
@@ -65,7 +65,7 @@
         {% endif %}
 
         {% if post.embedlink or post.image %}
-        <div class="blog-txt">
+        <div class="blog-txt-right">
         {{ post.message|safe }}
         </div>
         {% else %}

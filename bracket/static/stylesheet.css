@@ -21,8 +21,9 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
 .blog-body {flex-wrap: wrap; display: flex; background: #e1e1e1; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; clear: both;}
 .blog-media {position: relative; overflow: hidden; width: calc(560px/1.5); height: calc(315px/1.5); padding: 0px; margin: 15px auto; border-width: 0px; border-radius: 10px; z-index: 2;}
 .blog-media iframe {position: relative; z-index: 2; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
-.blog-media img {position:relative; z-index: -1; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
+.blog-media img {position: relative; z-index: -1; padding: 0; width: calc(560px/1.5); height: calc(315px/1.5);}
 .blog-txt {padding: 0 0 0 20px; display: inline-block; width: calc(100% - 560px/1.5 - 80px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin: 0 auto; font-size: 14px;}
+.blog-txt-right {padding: 0 20px 0 0; display: inline-block; width: calc(100% - 560px/1.5 - 80px); border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin: 0 auto; font-size: 14px;}
 .blog-txt-only {padding: 0 0 0 0px; display: inline-block; width: 92%; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; margin: 0 auto; font-size: 14px;}
 
 .master button {cursor: not-allowed; pointer-events: none;}
@@ -132,12 +133,14 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
   .header p.intro {font-size: 1.4em; margin-bottom: -30px;}
   .header h1 {font-size: 2.8em; margin: 10px 0 15px;}
   .header p.host {font-size: 1em; letter-spacing: 4px;}
-  .blog-body {flex-wrap: wrap}
+  .blog-body {flex-wrap: wrap; flex-direction: row;}
   .blogs .blog-media {width: calc(560px/1.75); height: calc(315px/1.75);}
   .blogs .blog-media iframe {width: calc(560px/1.75); height: calc(315px/1.75);}
   .blogs .blog-media img {width: calc(560px/1.75); height: calc(315px/1.75);}
   .blogs .blog-body .blog-media {margin: 10px auto;}
-  .blogs .blog-body .blog-txt .blog-txt-only {width: 90%; margin: 0 auto; padding: 0;}
+  .blogs .blog-body .blog-txt .blog-txt-right .blog-txt-only {width: 90%; margin: 0 auto; padding: 0;}
+  .blog-txt {min-width: 90%; padding: 0; margin: 0 auto;}
+  .blog-txt-right {min-width: 90%; padding: 0; margin: 0 auto;} 
   .flexbox-standings {flex-wrap: wrap; width: 80%; min-width: 0;}
   .col-bracket img {width: 120%; margin-left: -10%; margin-right: -10%;}
   .flexbox-master {flex-wrap: wrap;}
@@ -166,12 +169,14 @@ body .blogs {background: #21314D; width: 70%; margin: 40px auto; border-width: 2
   .header p.host {font-size: 0.9em; letter-spacing: 4px;}
   .nav-bar a {padding: 0 12px 0;}
   .blogs h2 {font-size: 18px;}
-  .blog-body {flex-wrap: wrap;}
+  .blog-body {flex-wrap: wrap; flex-direction: row;}
   .blogs .blog-media {width: calc(560px/2); height: calc(315px/2);}
   .blogs .blog-media iframe {width: calc(560px/2); height: calc(315px/2);}
   .blogs .blog-media img {width: calc(560px/2); height: calc(315px/2);}
   .blogs .blog-body .blog-media {margin: 10px auto;}
-  .blogs .blog-body .blog-txt .blog-txt-only {width: 90%; margin: 0 auto; padding: 0;}
+  .blogs .blog-body .blog-txt .blog-txt-right .blog-txt-only {width: 90%; margin: 0 auto; padding: 0;}
+  .blog-txt {min-width: 90%; padding: 0; margin: 0 auto;}
+  .blog-txt-right {min-width: 90%; padding: 0; margin: 0 auto;}
   .flexbox-standings {flex-wrap: wrap; width: 80%; min-width: 0;}
   .col-bracket {min-width: 0;}
   .col-bracket img {width: 120%; margin-left: -10%; margin-right: -10%;}
