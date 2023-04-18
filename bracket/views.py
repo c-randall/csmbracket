@@ -13,7 +13,7 @@ import pandas as pd
 # Create your views here.
 def index(request):
 
-    blogquery = BlogPost.objects.all().order_by('-date')
+    blogquery = BlogPost.objects.all().order_by('-date').exclude(visible=False)
     context = {'blogposts': blogquery}
 
     return render(request, 'index.html', context)

@@ -127,6 +127,7 @@ class BlogPost(models.Model):
     message = tinymce_models.HTMLField()
     image = models.ImageField(upload_to='BlogPosts', blank=True)
     embedlink = models.CharField(max_length=3000, blank=True)
+    visible = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-date',)

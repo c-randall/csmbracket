@@ -36,4 +36,5 @@ class AdminPageControl(admin.ModelAdmin):
 
 @admin.register(BlogPost)
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'date',)
+    list_display = ('__str__', 'date', 'visible')
+    list_editable = ('visible',)
